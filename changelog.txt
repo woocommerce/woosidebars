@@ -1,0 +1,20 @@
+*** WooSidebars Changelog ***
+
+2012.08.14 - version 1.1.2
+ * /integrations/integration-woocommerce.php - Added logic to stop undefined index notices in foreach(). Prevent direct file access.
+ * /classes/class.wooconditions.php, 
+   /classes/class.woosidebars.php - Prevent direct file access.
+ * /classes/class.updater.php - Prevent direct file access. Return $false instead of false when checking for updates, if not WooSidebars.
+ * /lang/woosidebars-en_GB.po - Rescanned language file.
+ * /lang/woosidebars-xx_XX.pot - Rescanned language template file.
+ * woosidebars.php - Prevent direct file access. Update stable tag.
+ * index.php - Added to prevent directory listing.
+
+2012.05.23 - version 1.1.0
+ * /classes/class.woosidebars.php - Adjustments to accept integrations.
+ * /classes/class.wooconditions.php - Adjustments to accept integrations.
+ * /integrations/integration-woocommerce.php - Initial WooCommerce integration, if WooCommerce is active.
+ * woosidebars.php - Load WooCommerce integration, if WooCommerce is active.
+
+2012.04.11 - version 1.0.0
+ * Initial release. Woo!
