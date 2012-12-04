@@ -15,6 +15,11 @@ With WooSidebars, it's possible to change the widgets that display in a sidebar 
 
 [vimeo http://vimeo.com/42980663]
 
+Looking for a helping hand? [View plugin documentation](http://dojodocs.woothemes.com/woosidebars/).
+
+Looking to contribute code to this plugin? [Fork the repository over at GitHub](http://github.com/woothemes/woosidebars/).
+(submit pull requests to the "develop" branch)
+
 == Installation ==
 
 = Minimum Requirements =
@@ -57,7 +62,8 @@ Yes; WooSidebars will work with any theme that supports dynamic widget areas.
 
 == Screenshots ==
 
-1. Adding a custom widget area.
+1. The list of custom widget areas.
+2. Adding a custom widget area.
 
 == Upgrade Notice ==
 

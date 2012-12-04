@@ -1,12 +1,12 @@
 <?php
 /**
  * Plugin Name: WooSidebars
- * Plugin URI: http://woothemes.com/
+ * Plugin URI: http://woothemes.com/woosidebars/
  * Description: Replace widget areas in your theme for specific pages, archives and other sections of WordPress.
  * Author: WooThemes
  * Author URI: http://woothemes.com/
- * Version: 1.1.2
- * Stable tag: 1.1.2
+ * Version: 1.2.0
+ * Stable tag: 1.2.0
  * License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
  
@@ -22,6 +22,6 @@
 
  global $woosidebars;
  $woosidebars = new Woo_Sidebars( __FILE__ );
- $woosidebars->version = '1.1.2';
+ $woosidebars->version = '1.2.0';
  $woosidebars->init();
 ?>
