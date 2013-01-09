@@ -121,7 +121,7 @@ class Woo_Sidebars {
 		// Run this on activation.
 		register_activation_hook( $this->file, array( &$this, 'activation' ) );
 	} // End init()
-	
+
 	/**
 	 * register_post_type_columns function.
 	 * 
@@ -144,7 +144,10 @@ class Woo_Sidebars {
 	 * @access public
 	 * @return void
 	 */
-	public function register_post_type () {			
+	public function register_post_type () {
+		// Allow only users who can adjust the theme to view the WooSidebars admin.
+		if ( ! current_user_can( 'switch_themes' ) ) return;
+
 		$page = 'themes.php';
 
 		$singular = __( 'Widget Area', 'woosidebars' );
@@ -181,7 +184,7 @@ class Woo_Sidebars {
 			'query_var' => true,
 			'rewrite' => $rewrite,
 			'capability_type' => 'post',
-			'has_archive' => $rewrite,
+			'has_archive' => 'sidebars',
 			'hierarchical' => false,
 			'menu_position' => null,
 			'supports' => $supports
@@ -333,7 +336,7 @@ class Woo_Sidebars {
 		global $post, $messages;
 		
 		// Verify
-		if ( ( get_post_type() != $this->token ) || ! wp_verify_nonce( $_POST['woo_' . $this->token . '_noonce'], plugin_basename(__FILE__) ) ) {  
+		if ( ( get_post_type() != $this->token ) || ! wp_verify_nonce( $_POST['woo_' . $this->token . '_noonce'], plugin_basename( __FILE__ ) ) ) {  
 			return $post_id;  
 		}
 		  
@@ -601,15 +604,24 @@ class Woo_Sidebars {
 			wp_enqueue_style( 'jquery-ui-tabs' );
 			
 			wp_register_style( $this->token . '-admin', $this->assets_url . '/css/admin.css', array(), '1.0.0' );
-			
 			wp_enqueue_style( $this->token . '-admin' );
 			
 			wp_dequeue_style( 'jquery-ui-datepicker' );
+
+			if ( class_exists( 'WPSEO_Metabox' ) ) {
+				// Dequeue unused WordPress SEO CSS files.
+				wp_dequeue_style( 'edit-page' );
+				wp_dequeue_style( 'metabox-tabs' );
+
+				$color = get_user_meta( get_current_user_id(), 'admin_color', true );
+				if ( '' == $color ) $color = 'fresh';
+
+				wp_dequeue_style( 'metabox-' . $color );
+			}
 		}
 		
 		if ( in_array( $pagenow, array( 'edit.php' ) ) ) {
 			wp_register_style( $this->token . '-admin-posts', $this->assets_url . '/css/admin-posts.css', array(), '1.0.0' );
-			
 			wp_enqueue_style( $this->token . '-admin-posts' );
 		}
 	} // End enqueue_styles()
@@ -636,11 +648,9 @@ class Woo_Sidebars {
 	 */
 	public function add_post_column_data ( $column_name, $id ) {
 		global $wpdb, $post;
-		
 		$meta = get_post_custom( $id );
 		
 		switch ( $column_name ) {
-			
 			case 'woosidebars_enable':
 				$image = 'success-off';
 				$value = '';
@@ -652,7 +662,6 @@ class Woo_Sidebars {
 				}
 				
 				$url = wp_nonce_url( admin_url( 'admin-ajax.php?action=woosidebars-post-enable&post_id=' . $post->ID ), 'woosidebars-post-enable' );
-				
 				$value = '<span class="' . esc_attr( $class ) . '"><a href="' . esc_url( $url ) . '"><img src="' . $this->assets_url . '/images/' . $image . '.png" /></a></span>';
 				
 				echo $value;
@@ -660,7 +669,6 @@ class Woo_Sidebars {
 
 			default:
 			break;
-		
 		}
 	} // End add_post_column_data()
 	
@@ -672,9 +680,7 @@ class Woo_Sidebars {
 	 */
 	public function enable_custom_post_sidebars () {
 		if( ! is_admin() ) die;
-
 		if( ! current_user_can( 'edit_posts' ) ) wp_die( __( 'You do not have sufficient permissions to access this page.', 'woosidebars' ) );
-		
 		if( ! check_admin_referer( 'woosidebars-post-enable' ) ) wp_die( __( 'You have taken too long. Please go back and retry.', 'woosidebars' ) );
 		
 		$post_id = isset( $_GET['post_id'] ) && (int)$_GET['post_id'] ? (int)$_GET['post_id'] : '';
@@ -705,11 +711,11 @@ class Woo_Sidebars {
 	 * @return string $m
 	 */
 	public function multidimensional_search ( $needle, $haystack ) {
-		if (empty($needle) || empty($haystack)) {
+		if (empty( $needle ) || empty( $haystack ) ) {
             return false;
         }
         
-        foreach ($haystack as $key => $value) {
+        foreach ( $haystack as $key => $value ) {
             $exists = 0;
         	foreach ( (array)$needle as $nkey => $nvalue) {
                 if ( ! empty( $value[$nvalue] ) && is_array( $value[$nvalue] ) ) {
@@ -754,8 +760,8 @@ class Woo_Sidebars {
 
 		get_current_screen()->set_help_sidebar(
 		'<p><strong>' . __( 'For more information:', 'woosidebars' ) . '</strong></p>' .
-		'<p><a href="http://support.woothemes.com/?ref=' . 'woosidebars' . '" target="_blank">' . __( 'Support Forums', 'woosidebars' ) . '</a></p>' . 
-		'<p><a href="http://woothemes.com/support/woosidebars/?ref=' . 'woosidebars' . '" target="_blank">' . __( 'WooSidebars Documentation', 'woosidebars' ) . '</a></p>'
+		'<p><a href="http://support.woothemes.com/?ref=' . 'woosidebars' . '" target="_blank">' . __( 'Support HelpDesk', 'woosidebars' ) . '</a></p>' . 
+		'<p><a href="http://dojodocs.woothemes.com/woosidebars/?ref=' . 'woosidebars' . '" target="_blank">' . __( 'WooSidebars Documentation', 'woosidebars' ) . '</a></p>'
 		);
 	} // End add_contextual_help()
 

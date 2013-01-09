@@ -2,8 +2,8 @@
 Contributors: woothemes, mattyza
 Tags: widgets, sidebars, widget-areas
 Requires at least: 3.3
-Tested up to: 3.5-beta3
-Stable tag: 1.2.0
+Tested up to: 3.5
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,11 @@ For further documentation on using WooSidebars, please view the [WooSidebars Doc
 
 Yes; WooSidebars will work with any theme that supports dynamic widget areas.
 
+= How can I contribute to WooSidebars development? =
+
+Looking to contribute code to this plugin? [Fork the repository over at GitHub](http://github.com/woothemes/woosidebars/).
+(submit pull requests to the "develop" branch)
+
 == Screenshots ==
 
 1. The list of custom widget areas.
@@ -67,10 +72,19 @@ Yes; WooSidebars will work with any theme that supports dynamic widget areas.
 
 == Upgrade Notice ==
 
+= 1.2.1 =
+Updated for WordPress 3.5+ compatibility. Adjusted "Advanced" tab logic. Fixed bug where "Template Hierarchy -> Pages" condition wasn't being applied correctly. Dequeue WordPress SEO admin stylesheets from the "Widget Areas" "Add" and "Edit" screens.
+
 = 1.2.0 =
 Moved to WordPress.org. Woo! Added scope to methods and properties where missing.
 
 == Changelog ==
+
+= 1.2.1 = 
+* 2013-01-09
+* Updated admin JavaScript for WordPress 3.5+ compatibility. Moved "Advanced" tab outside of the tabs list.
+* Fixed bug with the "Template Hierarchy -> Pages" condition that wasn't applying.
+* When WordPress SEO is active, dequeue unused stylesheets on the "Widget Areas" "add" and "edit" screens.
 
 = 1.2.0 =
 * Renamed files according to standards naming convention.

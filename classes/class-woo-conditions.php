@@ -110,10 +110,14 @@ class Woo_Conditions {
 		$conditions = array();
 		$conditions_headings = array();
 		
+		// Get an array of the different post status labels, in case we need it later.
+		$post_statuses = get_post_statuses();
+
 		// Pages
 		$conditions['pages'] = array();
 		
-		$pages = get_pages();
+		$statuses_string = join( ',', array_keys( $post_statuses ) );
+		$pages = get_pages( array( 'post_status' => $statuses_string ) );
 		
 		if ( count( $pages ) > 0 ) {
 		
@@ -121,8 +125,13 @@ class Woo_Conditions {
 			
 			foreach ( $pages as $k => $v ) {
 				$token = 'post-' . $v->ID;
+				$label = $v->post_title;
+				if ( 'publish' != $v->post_status ) {
+					$label .= ' <strong>(' . $post_statuses[$v->post_status] . ')</strong>';
+				}
+
 				$conditions['pages'][$token] = array(
-									'label' => $v->post_title, 
+									'label' => $label, 
 									'description' => sprintf( __( 'The "%s" page', 'woosidebars' ), $v->post_title )
 									);
 			}
@@ -153,7 +162,6 @@ class Woo_Conditions {
 		}
 		
 		// Add per-post support for any post type that supports it.
-		
 		$args = array(
 				'show_ui' => true,
 				'public' => true,
@@ -169,20 +177,24 @@ class Woo_Conditions {
 				break;
 			}
 		}
-		
+
 		foreach ( $post_types as $k => $v ) {
 			if ( ! post_type_supports( $k, 'woosidebars' ) ) { continue; }
 			
 			$conditions_headings[$k] = $v->labels->name;
 			
-			$query_args = array( 'numberposts' => -1, 'post_type' => $k, 'meta_key' => '_enable_sidebar', 'meta_value' => 'yes', 'meta_compare' => '=' );
+			$query_args = array( 'numberposts' => -1, 'post_type' => $k, 'meta_key' => '_enable_sidebar', 'meta_value' => 'yes', 'meta_compare' => '=', 'post_status' => 'any' );
 			
 			$posts = get_posts( $query_args );
 			
 			if ( count( $posts ) > 0 ) {
 				foreach ( $posts as $i => $j ) {
+					$label = $j->post_title;
+					if ( 'publish' != $j->post_status ) {
+						$label .= ' <strong>(' . $post_statuses[$j->post_status] . ')</strong>';
+					}
 					$conditions[$k]['post' . '-' . $j->ID] = array(
-										'label' => $j->post_title, 
+										'label' => $label, 
 										'description' => sprintf( __( 'A custom sidebar for "%s"', 'woosidebars' ), esc_attr( $j->post_title ) )
 										);
 				}					
@@ -228,7 +240,7 @@ class Woo_Conditions {
 			foreach ( $post_types as $k => $v ) {
 				$token = 'post-type-' . $k;
 				$conditions['post_types'][$token] = array(
-									'label' => sprintf( __( 'Individual %s', 'woosidebars' ), $v->labels->name ), 
+									'label' => sprintf( __( 'Each Individual %s', 'woosidebars' ), $v->labels->singular_name ), 
 									'description' => sprintf( __( 'Entries in the "%s" post type', 'woosidebars' ), $v->labels->name )
 									);
 			}
@@ -354,6 +366,7 @@ class Woo_Conditions {
 		if ( is_singular() ) {
 			$this->conditions[] = 'singular';
 			$this->conditions[] = 'post-type-' . get_post_type();
+			$this->conditions[] = get_post_type();
 
 			$categories = get_the_category( get_the_ID() );
 
@@ -490,7 +503,7 @@ class Woo_Conditions {
 			
 			$html .= '<div id="taxonomy-category" class="categorydiv tabs woo-conditions">' . "\n";
 			
-				$html .= '<ul id="category-tabs" class="conditions-tabs">' . "\n";
+				$html .= '<ul id="category-tabs" class="conditions-tabs alignleft">' . "\n";
 				
 				$count = 0;
 
@@ -523,10 +536,10 @@ class Woo_Conditions {
 				
 				$class = 'hide-if-no-js advanced';
 				if ( ! $show_advanced ) { $class .= ' hide'; }
-				
-				$html .= '<li class="advanced-settings alignright hide-if-no-js"><a href="#">' . __( 'Advanced', 'woosidebars' ) . '</a></li>' . "\n";
 
 				$html .= '</ul>' . "\n";
+
+				$html .= '<ul class="conditions-tabs"><li class="advanced-settings alignright hide-if-no-js"><a href="#">' . __( 'Advanced', 'woosidebars' ) . '</a></li></ul>' . "\n";
 			
 			foreach ( $this->conditions_reference as $k => $v ) {
 				$count = 0;
@@ -702,7 +715,7 @@ class Woo_Conditions {
 		if ( get_post_type() != $this->token ) { return; }
 		
 		if ( in_array( $pagenow, array( 'post.php', 'post-new.php' ) ) ) {
-			wp_register_script( $this->token . '-admin', $this->assets_url . '/js/admin.js', array( 'jquery', 'jquery-ui-tabs' ), '1.0.0', true );
+			wp_register_script( $this->token . '-admin', $this->assets_url . '/js/admin.js', array( 'jquery', 'jquery-ui-tabs' ), '1.2.1', true );
 			
 			wp_enqueue_script( $this->token . '-admin' );
 			
