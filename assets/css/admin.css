@@ -1,5 +1,7 @@
 .conditions-tabs li { display: inline; margin: 5px 0; padding: 5px; }
+.woo-conditions.ui-tabs { padding: 0; }
 .woo-conditions .ui-tabs-hide { display: none !important; }
+.woo-conditions .ui-widget-header { border: none; }
 .woo-conditions .conditions-tabs { background:#eaeaea;padding:3px 9px 0;margin:0;overflow:hidden;zoom:1;line-height:1em;-webkit-box-shadow:inset 0 -1px 0 0 #d5d5d5;-moz-box-shadow:inset 0 -1px 0 0 x #d5d5d5;box-shadow:inset 0 -1px 0 0 #d5d5d5; }
 .woo-conditions .conditions-tabs li { float:left;padding:0;margin:0 5px 0 0; }
 .woo-conditions .conditions-tabs li.alignright { float: right; }
