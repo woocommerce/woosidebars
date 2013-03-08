@@ -12,7 +12,7 @@ class WooSidebars_Integration_WooCommerce {
 		add_filter( 'woo_conditions', array( &$this, 'register_conditions' ) );
 		add_filter( 'woo_conditions_headings', array( &$this, 'register_conditions_headings' ) );
 		add_filter( 'woo_conditions_reference', array( &$this, 'register_conditions_reference' ) );
-		
+
 		add_post_type_support( 'product', 'woosidebars' );
 	} // End __construct()
 
@@ -71,7 +71,7 @@ class WooSidebars_Integration_WooCommerce {
 	 */
 	public function register_conditions_headings ( $headings ) {
 		$headings['woocommerce'] = __( 'WooCommerce', 'woosidebars' );
-		
+
 		return $headings;
 	} // End register_conditions_headings()
 
@@ -121,7 +121,7 @@ class WooSidebars_Integration_WooCommerce {
 
 		// Setup terminologies for the "in category" and "tagged with" conditions.
 		$terminologies = array(
-								'taxonomy-product_cat' => __( 'Products in the "%s" category', 'woosidebars' ), 
+								'taxonomy-product_cat' => __( 'Products in the "%s" category', 'woosidebars' ),
 								'taxonomy-product_tag' => __( 'Products tagged "%s"', 'woosidebars' )
 							  );
 

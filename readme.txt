@@ -2,8 +2,8 @@
 Contributors: woothemes, mattyza
 Tags: widgets, sidebars, widget-areas
 Requires at least: 3.3
-Tested up to: 3.5
-Stable tag: 1.2.1
+Tested up to: 3.5.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,9 +30,9 @@ Looking to contribute code to this plugin? [Fork the repository over at GitHub](
 
 = Automatic installation =
 
-Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t even need to leave your web browser. To do an automatic install of WooSidebars, log in to your WordPress admin panel, navigate to the Plugins menu and click Add New. 
+Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t even need to leave your web browser. To do an automatic install of WooSidebars, log in to your WordPress admin panel, navigate to the Plugins menu and click Add New.
 
-In the search field type "WooSidebars" and click Search Plugins. Once you’ve found our widget areas plugin you can view details about it such as the the point release, rating and description. Most importantly of course, you can install it by simply clicking Install Now. After clicking that link you will be asked if you’re sure you want to install the plugin. Click yes and WordPress will automatically complete the installation. 
+In the search field type "WooSidebars" and click Search Plugins. Once you’ve found our widget areas plugin you can view details about it such as the the point release, rating and description. Most importantly of course, you can install it by simply clicking Install Now. After clicking that link you will be asked if you’re sure you want to install the plugin. Click yes and WordPress will automatically complete the installation.
 
 = Manual installation =
 
@@ -48,9 +48,9 @@ Once WooSidebars has been installed and activated, please visit the "Appearance 
 
 = Upgrading =
 
-Automatic updates should work a charm; as always though, ensure you backup your site just in case. 
+Automatic updates should work a charm; as always though, ensure you backup your site just in case.
 
-== Frequently Asked Questions == 
+== Frequently Asked Questions ==
 
 = Where can I find WooSidebars documentation and user guides? =
 
@@ -72,6 +72,9 @@ Looking to contribute code to this plugin? [Fork the repository over at GitHub](
 
 == Upgrade Notice ==
 
+= 1.2.2 =
+"Widget Areas" menu is now only visible to users who can add/modify widgets.
+
 = 1.2.1 =
 Updated for WordPress 3.5+ compatibility. Adjusted "Advanced" tab logic. Fixed bug where "Template Hierarchy -> Pages" condition wasn't being applied correctly. Dequeue WordPress SEO admin stylesheets from the "Widget Areas" "Add" and "Edit" screens.
 
@@ -80,7 +83,11 @@ Moved to WordPress.org. Woo! Added scope to methods and properties where missing
 
 == Changelog ==
 
-= 1.2.1 = 
+= 1.2.2 =
+* 2013-03-08
+* Changes capability for displaying the menu to "edit_theme_options" in line with the "Widgets" menu capability.
+
+= 1.2.1 =
 * 2013-01-09
 * Updated admin JavaScript for WordPress 3.5+ compatibility. Moved "Advanced" tab outside of the tabs list.
 * Fixed bug with the "Template Hierarchy -> Pages" condition that wasn't applying.

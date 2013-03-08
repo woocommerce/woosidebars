@@ -1,5 +1,8 @@
 *** WooSidebars Changelog ***
 
+2013.03.08 - version 1.2.2
+ * /classes/class-woo-sidebars.php - Changed capability for displaying the "Widget Areas" menu to use "edit_theme_options" instead of "switch_themes".
+
 2013.01.09 - version 1.2.1
  * /classes/class-woo-conditions.php - Update script version. Update conditions meta box HTML to move the "advanced" button to it's own list instead of being a part of the tabs. Add "post_type" condition without the "post-type-" prefix. Fixes the "Template Hierarchy -> Pages" bug.
  * /classes/class-woo-sidebars.php - If WordPress SEO is active, remove the unused meta box styling, as it conflicts with the custom WooSidebars meta box styling. Set "has_archive" to "sidebars". Make sure only users with the "switch_themes" capability can see the "Widget Areas" admin menu.
@@ -7,7 +10,7 @@
 
 2012.08.14 - version 1.1.2
  * /integrations/integration-woocommerce.php - Added logic to stop undefined index notices in foreach(). Prevent direct file access.
- * /classes/class.wooconditions.php, 
+ * /classes/class.wooconditions.php,
    /classes/class.woosidebars.php - Prevent direct file access.
  * /classes/class.updater.php - Prevent direct file access. Return $false instead of false when checking for updates, if not WooSidebars.
  * /lang/woosidebars-en_GB.po - Rescanned language file.
