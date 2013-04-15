@@ -10,15 +10,15 @@ jQuery( document ).ready( function () {
 			new_status = '0'; // Don't display.
 		}
 
-		// Perform the AJAX call.	
+		// Perform the AJAX call.
 		jQuery.post(
-			ajaxurl, 
-			{ 
-				action : 'woosidebars-toggle-advanced-items', 
-				woosidebars_advanced_noonce : woosidebars_localized_data.woosidebars_advanced_noonce, 
+			ajaxurl,
+			{
+				action : 'woosidebars-toggle-advanced-items',
+				woosidebars_advanced_noonce : woosidebars_localized_data.woosidebars_advanced_noonce,
 				new_status: new_status
 			},
-			function( response ) {}	
+			function( response ) {}
 		);
 
 		return false;
