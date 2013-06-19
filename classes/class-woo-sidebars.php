@@ -106,7 +106,7 @@ class Woo_Sidebars {
 			add_action( 'admin_print_styles', array( $this, 'enqueue_styles' ), 12 );
 			add_action( 'admin_head', array( $this, 'add_contextual_help' ) );
 			if ( $pagenow == 'edit.php' && isset( $_GET['post_type'] ) && esc_attr( $_GET['post_type'] ) == $this->token ) {
-				add_filter( 'manage_edit-' . $this->token . '_columns', array( &$this, 'register_custom_column_headings' ), 10, 1 );
+				add_filter( 'manage_edit-' . $this->token . '_columns', array( $this, 'register_custom_column_headings' ), 10, 1 );
 				add_action( 'manage_posts_custom_column', array( $this, 'register_custom_columns' ), 10, 2 );
 			}
 		}
@@ -284,14 +284,14 @@ class Woo_Sidebars {
 	 * @return void
 	 */
 	public function meta_box_setup () {
-		add_meta_box( 'sidebar-to-replace', __( 'Sidebar To Replace', 'woosidebars' ), array( &$this, 'meta_box_content' ), $this->token, 'side', 'low' );
+		add_meta_box( 'sidebar-to-replace', __( 'Sidebar To Replace', 'woosidebars' ), array( $this, 'meta_box_content' ), $this->token, 'side', 'low' );
 
 		// Remove "Custom Settings" meta box.
 		remove_meta_box( 'woothemes-settings', 'sidebar', 'normal' );
 
 		// Customise the "Excerpt" meta box for the sidebars.
 		remove_meta_box( 'postexcerpt', $this->token, 'normal' );
-		add_meta_box( 'sidebar-description', __( 'Description', 'woosidebars' ), array( &$this, 'description_meta_box' ), $this->token, 'normal', 'core' );
+		add_meta_box( 'sidebar-description', __( 'Description', 'woosidebars' ), array( $this, 'description_meta_box' ), $this->token, 'normal', 'core' );
 	} // End meta_box_setup()
 
 	/**

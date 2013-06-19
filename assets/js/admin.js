@@ -2,11 +2,11 @@ jQuery( document ).ready( function () {
 	jQuery( '.woo-conditions.tabs' ).tabs();
 	jQuery( '.woo-conditions.tabs .inner-tabs' ).tabs();
 
-	jQuery( '#woo-conditions .advanced-settings a' ).click( function ( e ) {
-		jQuery( '#woo-conditions .tabs li.advanced' ).toggleClass( 'hide' );
+	jQuery( '#woosidebars-conditions .advanced-settings a' ).click( function ( e ) {
+		jQuery( '#woosidebars-conditions .tabs li.advanced' ).toggleClass( 'hide' );
 
 		var new_status = '1'; // Do display.
-		if ( jQuery( '#woo-conditions .tabs li.advanced' ).hasClass( 'hide' ) ) {
+		if ( jQuery( '#woosidebars-conditions .tabs li.advanced' ).hasClass( 'hide' ) ) {
 			new_status = '0'; // Don't display.
 		}
 
