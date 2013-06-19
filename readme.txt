@@ -3,7 +3,7 @@ Contributors: woothemes, mattyza
 Tags: widgets, sidebars, widget-areas
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 1.2.2
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,9 @@ Looking to contribute code to this plugin? [Fork the repository over at GitHub](
 2. Adding a custom widget area.
 
 == Upgrade Notice ==
+
+= 1.3.0 =
+Optimisation update.
 
 = 1.2.2 =
 "Widget Areas" menu is now only visible to users who can add/modify widgets.
