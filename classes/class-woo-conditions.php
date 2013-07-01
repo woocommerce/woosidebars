@@ -422,8 +422,11 @@ class Woo_Conditions {
 			if ( ! is_category() && ! is_tag() ) {
 				$this->conditions[] = 'taxonomies';
 			}
-			$this->conditions[] = 'archive-' . $obj->taxonomy;
-			$this->conditions[] = 'term-' . $obj->term_id;
+
+			if ( is_object( $obj ) ) {
+				$this->conditions[] = 'archive-' . $obj->taxonomy;
+				$this->conditions[] = 'term-' . $obj->term_id;
+			}
 		}
 	} // End is_taxonomy()
 
