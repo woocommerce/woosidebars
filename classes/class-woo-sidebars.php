@@ -486,6 +486,13 @@ class Woo_Sidebars {
 			return $sidebars_widgets;
 		}
 
+		// Determine the maximum number of sidebars to look for (2 per widget area, minus one for the wp_inactive_widgets area, which we don't use).
+		if ( is_array( $sidebars_widgets ) && 0 < count( $sidebars_widgets ) ) {
+			$total_sidebars = ( count( $sidebars_widgets ) - 1 ) * 2;
+			// Multiply by 5 to account for multiple conditions.
+			$total_sidebars = $total_sidebars * 5;
+		}
+
 	 	global $woo_custom_sidebar_data;
 
 	 	if ( ! isset( $woo_custom_sidebar_data ) ) {
@@ -494,7 +501,7 @@ class Woo_Sidebars {
 
 		 	$args = array(
 		 		'post_type' => $this->token,
-		 		'posts_per_page' => -1,
+		 		'posts_per_page' => $total_sidebars,
 		 		'suppress_filters' => 'false'
 		 	);
 
