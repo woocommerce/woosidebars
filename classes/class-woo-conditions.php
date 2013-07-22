@@ -266,7 +266,7 @@ class Woo_Conditions {
 
 				if ( $taxonomy->public == true ) {
 					$conditions['taxonomies']['archive-' . $k] = array(
-										'label' => $taxonomy->labels->name . ' (' . $k . ')',
+										'label' => esc_html( $taxonomy->labels->name ) . ' (' . esc_html( $k ) . ')',
 										'description' => sprintf( __( 'The default "%s" archives', 'woosidebars' ), strtolower( $taxonomy->labels->name ) )
 										);
 
@@ -276,9 +276,9 @@ class Woo_Conditions {
 					if ( count( $terms ) > 0 ) {
 						$conditions['taxonomy-' . $k] = array();
 						foreach ( $terms as $i => $j ) {
-							$conditions['taxonomy-' . $k]['term-' . $j->term_id] = array( 'label' => $j->name, 'description' => sprintf( __( 'The %s %s archive', 'woosidebars' ), $j->name, strtolower( $taxonomy->labels->name ) ) );
+							$conditions['taxonomy-' . $k]['term-' . $j->term_id] = array( 'label' => esc_html( $j->name ), 'description' => sprintf( __( 'The %s %s archive', 'woosidebars' ), esc_html( $j->name ), strtolower( $taxonomy->labels->name ) ) );
 							if ( $k == 'category' ) {
-								$conditions['taxonomy-' . $k]['in-term-' . $j->term_id] = array( 'label' => sprintf( __( 'All posts in "%s"', 'woosidebars' ), $j->name ), 'description' => sprintf( __( 'All posts in the %s %s archive', 'woosidebars' ), $j->name, strtolower( $taxonomy->labels->name ) ) );
+								$conditions['taxonomy-' . $k]['in-term-' . $j->term_id] = array( 'label' => sprintf( __( 'All posts in "%s"', 'woosidebars' ), esc_html( $j->name ) ), 'description' => sprintf( __( 'All posts in the %s %s archive', 'woosidebars' ), esc_html( $j->name ), strtolower( $taxonomy->labels->name ) ) );
 							}
 						}
 					}
