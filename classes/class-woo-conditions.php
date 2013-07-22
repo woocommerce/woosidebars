@@ -647,7 +647,7 @@ class Woo_Conditions {
 		global $post, $messages;
 
 		// Verify
-		if ( ( get_post_type() != $this->token ) || ! wp_verify_nonce( $_POST['woo_' . $this->token . '_conditions_noonce'], plugin_basename(__FILE__) ) ) {
+		if ( ! isset( $_POST['woo_' . $this->token . '_conditions_noonce'] ) || ( get_post_type() != $this->token ) || ! wp_verify_nonce( $_POST['woo_' . $this->token . '_conditions_noonce'], plugin_basename(__FILE__) ) ) {
 			return $post_id;
 		}
 
