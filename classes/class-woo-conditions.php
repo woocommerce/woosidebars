@@ -693,14 +693,12 @@ class Woo_Conditions {
 	 * @return void
 	 */
 	public function ajax_toggle_advanced_items () {
-		$nonce = $_POST['woosidebars_advanced_noonce'];
-		$status = $_POST['new_status'];
 		//Add nonce security to the request
-		if ( ! wp_verify_nonce( $nonce, 'woosidebars_advanced_noonce' ) ) {
+		if ( if ( ! isset( $_POST['woosidebars_advanced_noonce'] ) || ! isset( $_POST['new_status'] ) ) || ! wp_verify_nonce( $_POST['woosidebars_advanced_noonce'], 'woosidebars_advanced_noonce' ) ) {
 			die();
 		}
 
-		$response = set_user_setting( 'woosidebarsshowadvanced', $status );
+		$response = set_user_setting( 'woosidebarsshowadvanced', $_POST['new_status'] );
 
 		echo $response;
 		die(); // WordPress may print out a spurious zero without this can be particularly bad if using JSON
