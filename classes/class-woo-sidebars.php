@@ -421,7 +421,7 @@ class Woo_Sidebars {
 		$sidebars = array();
 		$to_ignore = array();
 
-		$custom_sidebars = get_posts( 'post_type=sidebar&numberposts=-1' );
+		$custom_sidebars = get_posts( array( 'post_type' => 'sidebar', 'numberposts' => -1, 'suppress_filters' => 'false' ) );
 		if ( ! is_wp_error( $custom_sidebars ) && count( $custom_sidebars ) > 0 ) {
 			foreach ( $custom_sidebars as $k => $v ) {
 				$to_ignore[] = $v->post_name;
@@ -446,7 +446,7 @@ class Woo_Sidebars {
 	 * @return void
 	 */
 	public function register_custom_sidebars () {
-		$sidebars = get_posts( array( 'post_type' => 'sidebar', 'posts_per_page' => -1 ) );
+		$sidebars = get_posts( array( 'post_type' => 'sidebar', 'posts_per_page' => -1, 'suppress_filters' => 'false' ) );
 
 		if ( count( $sidebars ) > 0 ) {
 			foreach ( $sidebars as $k => $v ) {
@@ -494,7 +494,8 @@ class Woo_Sidebars {
 
 		 	$args = array(
 		 		'post_type' => $this->token,
-		 		'posts_per_page' => -1
+		 		'posts_per_page' => -1,
+		 		'suppress_filters' => 'false'
 		 	);
 
 		 	$meta_query = array(

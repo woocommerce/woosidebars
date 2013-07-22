@@ -183,7 +183,7 @@ class Woo_Conditions {
 
 			$conditions_headings[$k] = $v->labels->name;
 
-			$query_args = array( 'numberposts' => -1, 'post_type' => $k, 'meta_key' => '_enable_sidebar', 'meta_value' => 'yes', 'meta_compare' => '=', 'post_status' => 'any' );
+			$query_args = array( 'numberposts' => -1, 'post_type' => $k, 'meta_key' => '_enable_sidebar', 'meta_value' => 'yes', 'meta_compare' => '=', 'post_status' => 'any', 'suppress_filters' => 'false' );
 
 			$posts = get_posts( $query_args );
 
