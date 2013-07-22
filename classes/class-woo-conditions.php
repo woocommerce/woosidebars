@@ -694,7 +694,7 @@ class Woo_Conditions {
 	 */
 	public function ajax_toggle_advanced_items () {
 		//Add nonce security to the request
-		if ( if ( ! isset( $_POST['woosidebars_advanced_noonce'] ) || ! isset( $_POST['new_status'] ) ) || ! wp_verify_nonce( $_POST['woosidebars_advanced_noonce'], 'woosidebars_advanced_noonce' ) ) {
+		if ( ( ! isset( $_POST['woosidebars_advanced_noonce'] ) || ! isset( $_POST['new_status'] ) ) || ! wp_verify_nonce( $_POST['woosidebars_advanced_noonce'], 'woosidebars_advanced_noonce' ) ) {
 			die();
 		}
 
