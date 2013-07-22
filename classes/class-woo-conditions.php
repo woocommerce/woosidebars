@@ -251,8 +251,7 @@ class Woo_Conditions {
 		$conditions['taxonomies'] = array();
 
 		$args = array(
-					'public' => true,
-					'show_ui' => true
+					'public' => true
 					);
 
 		$taxonomies = get_taxonomies( $args, 'objects' );
