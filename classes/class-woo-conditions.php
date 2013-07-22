@@ -529,7 +529,7 @@ class Woo_Conditions {
 					}
 
 					if ( isset( $this->conditions_headings[$k] ) ) {
-						$html .= '<li class="' . esc_attr( $class ) . '"><a href="#tab-' . esc_attr( $k ) . '">' . $this->conditions_headings[$k] . '</a></li>' . "\n";
+						$html .= '<li class="' . esc_attr( $class ) . '"><a href="#tab-' . esc_attr( $k ) . '">' . esc_html( $this->conditions_headings[$k] ) . '</a></li>' . "\n";
 					}
 
 					if ( $k == 'taxonomies' ) {
@@ -549,8 +549,8 @@ class Woo_Conditions {
 
 				$tab = '';
 
-				$tab .= '<div id="tab-' . $k . '" class="condition-tab">' . "\n";
-				$tab .= '<h4>' . $this->conditions_headings[$k] . '</h4>' . "\n";
+				$tab .= '<div id="tab-' . esc_attr( $k ) . '" class="condition-tab">' . "\n";
+				$tab .= '<h4>' . esc_html( $this->conditions_headings[$k] ) . '</h4>' . "\n";
 				$tab .= '<ul class="alignleft conditions-column">' . "\n";
 					foreach ( $v as $i => $j ) {
 						$count++;
@@ -559,7 +559,7 @@ class Woo_Conditions {
 						if ( in_array( $i, $selected_conditions ) ) {
 							$checked = ' checked="checked"';
 						}
-						$tab .= '<li><label class="selectit" title="' . esc_attr( $j['description'] ) . '"><input type="checkbox" name="conditions[]" value="' . $i . '" id="checkbox-' . $i . '"' . $checked . ' /> ' . $j['label'] . '</label></li>' . "\n";
+						$tab .= '<li><label class="selectit" title="' . esc_attr( $j['description'] ) . '"><input type="checkbox" name="conditions[]" value="' . $i . '" id="checkbox-' . $i . '"' . $checked . ' /> ' . esc_html( $j['label'] ) . '</label></li>' . "\n";
 
 						if ( $count % 10 == 0 && $count < ( count( $v ) ) ) {
 							$tab .= '</ul><ul class="alignleft conditions-column">';
@@ -592,7 +592,7 @@ class Woo_Conditions {
 						$class = 'hide-if-no-js';
 					}
 
-					$html .= '<li><a href="#tab-' . $k . '" title="' . __( 'Taxonomy Token', 'woosidebars' ) . ': ' . str_replace( 'taxonomy-', '', $k ) . '">' . $this->conditions_headings[$k] . '</a>';
+					$html .= '<li><a href="#tab-' . $k . '" title="' . __( 'Taxonomy Token', 'woosidebars' ) . ': ' . str_replace( 'taxonomy-', '', $k ) . '">' . esc_html( $this->conditions_headings[$k] ) . '</a>';
 						if ( $count != count( $taxonomy_terms ) ) {
 							$html .= ' |';
 						}
@@ -605,7 +605,7 @@ class Woo_Conditions {
 				$count = 0;
 
 				$html .= '<div id="tab-' . $k . '" class="condition-tab">' . "\n";
-				$html .= '<h4>' . $this->conditions_headings[$k] . '</h4>' . "\n";
+				$html .= '<h4>' . esc_html( $this->conditions_headings[$k] ) . '</h4>' . "\n";
 				$html .= '<ul class="alignleft conditions-column">' . "\n";
 					foreach ( $v as $i => $j ) {
 						$count++;
@@ -614,7 +614,7 @@ class Woo_Conditions {
 						if ( in_array( $i, $selected_conditions ) ) {
 							$checked = ' checked="checked"';
 						}
-						$html .= '<li><label class="selectit" title="' . esc_attr( $j['description'] ) . '"><input type="checkbox" name="conditions[]" value="' . $i . '" id="checkbox-' . $i . '"' . $checked . ' /> ' . $j['label'] . '</label></li>' . "\n";
+						$html .= '<li><label class="selectit" title="' . esc_attr( $j['description'] ) . '"><input type="checkbox" name="conditions[]" value="' . $i . '" id="checkbox-' . esc_attr( $i ) . '"' . $checked . ' /> ' . esc_html( $j['label'] ) . '</label></li>' . "\n";
 
 						if ( $count % 10 == 0 && $count < ( count( $v ) ) ) {
 							$html .= '</ul><ul class="alignleft conditions-column">';
