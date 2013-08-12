@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * public $version
  * private $file
+ * public $upper_limit
  *
  * private $token
  * private $prefix
@@ -54,6 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Woo_Sidebars {
 	public $version;
 	private $file;
+	public $upper_limit;
 
 	private $token;
 	private $prefix;
@@ -71,6 +73,7 @@ class Woo_Sidebars {
 	public function __construct ( $file ) {
 		$this->version = '';
 		$this->file = $file;
+		$this->upper_limit = intval( apply_filters( 'woosidebars_upper_limit', 200 ) );
 
 		$this->token = 'sidebar';
 		$this->prefix = 'woo_sidebar_';
@@ -90,36 +93,36 @@ class Woo_Sidebars {
 	 * @return void
 	 */
 	public function init () {
-		add_action( 'init', array( &$this, 'load_localisation' ) );
+		add_action( 'init', array( $this, 'load_localisation' ) );
 
-		add_action( 'init', array( &$this, 'register_post_type' ), 20 );
-		add_action( 'admin_menu', array( &$this, 'meta_box_setup' ), 20 );
-		add_action( 'save_post', array( &$this, 'meta_box_save' ) );
-		add_filter( 'enter_title_here', array( &$this, 'enter_title_here' ) );
-		add_filter( 'post_updated_messages', array( &$this, 'update_messages' ) );
-		add_action( 'widgets_init', array( &$this, 'register_custom_sidebars' ) );
-		add_action( 'get_header', array( &$this, 'init_sidebar_replacement' ) );
+		add_action( 'init', array( $this, 'register_post_type' ), 20 );
+		add_action( 'admin_menu', array( $this, 'meta_box_setup' ), 20 );
+		add_action( 'save_post', array( $this, 'meta_box_save' ) );
+		add_filter( 'enter_title_here', array( $this, 'enter_title_here' ) );
+		add_filter( 'post_updated_messages', array( $this, 'update_messages' ) );
+		add_action( 'widgets_init', array( $this, 'register_custom_sidebars' ) );
+		add_action( 'get_header', array( $this, 'init_sidebar_replacement' ) );
 
 		if ( is_admin() ) {
 			global $pagenow;
 
-			add_action( 'admin_print_styles', array( &$this, 'enqueue_styles' ), 12 );
+			add_action( 'admin_print_styles', array( $this, 'enqueue_styles' ), 12 );
 			add_action( 'admin_head', array( $this, 'add_contextual_help' ) );
 			if ( $pagenow == 'edit.php' && isset( $_GET['post_type'] ) && esc_attr( $_GET['post_type'] ) == $this->token ) {
-				add_filter( 'manage_edit-' . $this->token . '_columns', array( &$this, 'register_custom_column_headings' ), 10, 1 );
-				add_action( 'manage_posts_custom_column', array( &$this, 'register_custom_columns' ), 10, 2 );
+				add_filter( 'manage_edit-' . $this->token . '_columns', array( $this, 'register_custom_column_headings' ), 10, 1 );
+				add_action( 'manage_posts_custom_column', array( $this, 'register_custom_columns' ), 10, 2 );
 			}
 		}
 
 		// By default, add post type support for sidebars to the "post" post type.
 		add_post_type_support( 'post', 'woosidebars' );
 
-		add_action( 'admin_head', array( &$this, 'register_post_type_columns' ) );
+		add_action( 'admin_head', array( $this, 'register_post_type_columns' ) );
 
-		add_action( 'wp_ajax_woosidebars-post-enable', array( &$this, 'enable_custom_post_sidebars' ) );
+		add_action( 'wp_ajax_woosidebars-post-enable', array( $this, 'enable_custom_post_sidebars' ) );
 
 		// Run this on activation.
-		register_activation_hook( $this->file, array( &$this, 'activation' ) );
+		register_activation_hook( $this->file, array( $this, 'activation' ) );
 	} // End init()
 
 	/**
@@ -132,9 +135,9 @@ class Woo_Sidebars {
 		$post_type = get_post_type();
 
 		if ( $post_type != '' && post_type_supports( $post_type, 'woosidebars' ) ) {
-			add_filter( 'manage_edit-' . $post_type . '_columns', array( &$this, 'add_post_column_headings' ), 10, 1 );
-			add_action( 'manage_posts_custom_column', array( &$this, 'add_post_column_data' ), 10, 2 );
-			add_action( 'manage_pages_custom_column', array( &$this, 'add_post_column_data' ), 10, 2 );
+			add_filter( 'manage_edit-' . $post_type . '_columns', array( $this, 'add_post_column_headings' ), 10, 1 );
+			add_action( 'manage_posts_custom_column', array( $this, 'add_post_column_data' ), 10, 2 );
+			add_action( 'manage_pages_custom_column', array( $this, 'add_post_column_data' ), 10, 2 );
 		}
 	} // End register_post_type_columns()
 
@@ -284,14 +287,14 @@ class Woo_Sidebars {
 	 * @return void
 	 */
 	public function meta_box_setup () {
-		add_meta_box( 'sidebar-to-replace', __( 'Sidebar To Replace', 'woosidebars' ), array( &$this, 'meta_box_content' ), $this->token, 'side', 'low' );
+		add_meta_box( 'sidebar-to-replace', __( 'Sidebar To Replace', 'woosidebars' ), array( $this, 'meta_box_content' ), $this->token, 'side', 'low' );
 
 		// Remove "Custom Settings" meta box.
 		remove_meta_box( 'woothemes-settings', 'sidebar', 'normal' );
 
 		// Customise the "Excerpt" meta box for the sidebars.
 		remove_meta_box( 'postexcerpt', $this->token, 'normal' );
-		add_meta_box( 'sidebar-description', __( 'Description', 'woosidebars' ), array( &$this, 'description_meta_box' ), $this->token, 'normal', 'core' );
+		add_meta_box( 'sidebar-description', __( 'Description', 'woosidebars' ), array( $this, 'description_meta_box' ), $this->token, 'normal', 'core' );
 	} // End meta_box_setup()
 
 	/**
@@ -421,7 +424,7 @@ class Woo_Sidebars {
 		$sidebars = array();
 		$to_ignore = array();
 
-		$custom_sidebars = get_posts( 'post_type=sidebar&numberposts=-1' );
+		$custom_sidebars = get_posts( array( 'post_type' => 'sidebar', 'numberposts' => intval( $this->upper_limit ), 'suppress_filters' => 'false' ) );
 		if ( ! is_wp_error( $custom_sidebars ) && count( $custom_sidebars ) > 0 ) {
 			foreach ( $custom_sidebars as $k => $v ) {
 				$to_ignore[] = $v->post_name;
@@ -446,7 +449,7 @@ class Woo_Sidebars {
 	 * @return void
 	 */
 	public function register_custom_sidebars () {
-		$sidebars = get_posts( array( 'post_type' => 'sidebar', 'posts_per_page' => -1 ) );
+		$sidebars = get_posts( array( 'post_type' => 'sidebar', 'posts_per_page' => intval( $this->upper_limit ), 'suppress_filters' => 'false' ) );
 
 		if ( count( $sidebars ) > 0 ) {
 			foreach ( $sidebars as $k => $v ) {
@@ -464,7 +467,7 @@ class Woo_Sidebars {
 	 * @return void
 	 */
 	public function init_sidebar_replacement () {
-		add_filter( 'sidebars_widgets', array( &$this, 'replace_sidebars' ) );
+		add_filter( 'sidebars_widgets', array( $this, 'replace_sidebars' ) );
 	} // End init_sidebar_replacement()
 
 	/**
@@ -494,7 +497,8 @@ class Woo_Sidebars {
 
 		 	$args = array(
 		 		'post_type' => $this->token,
-		 		'posts_per_page' => -1
+		 		'posts_per_page' => intval( $this->upper_limit ),
+		 		'suppress_filters' => 'false'
 		 	);
 
 		 	$meta_query = array(
@@ -662,7 +666,7 @@ class Woo_Sidebars {
 				}
 
 				$url = wp_nonce_url( admin_url( 'admin-ajax.php?action=woosidebars-post-enable&post_id=' . $post->ID ), 'woosidebars-post-enable' );
-				$value = '<span class="' . esc_attr( $class ) . '"><a href="' . esc_url( $url ) . '"><img src="' . $this->assets_url . '/images/' . $image . '.png" /></a></span>';
+				$value = '<span class="' . esc_attr( $class ) . '"><a href="' . esc_url( $url ) . '"><img src="' . esc_url( $this->assets_url . '/images/' . $image . '.png' ) . '" /></a></span>';
 
 				echo $value;
 			break;
@@ -761,7 +765,7 @@ class Woo_Sidebars {
 		get_current_screen()->set_help_sidebar(
 		'<p><strong>' . __( 'For more information:', 'woosidebars' ) . '</strong></p>' .
 		'<p><a href="http://support.woothemes.com/?ref=' . 'woosidebars' . '" target="_blank">' . __( 'Support HelpDesk', 'woosidebars' ) . '</a></p>' .
-		'<p><a href="http://dojodocs.woothemes.com/woosidebars/?ref=' . 'woosidebars' . '" target="_blank">' . __( 'WooSidebars Documentation', 'woosidebars' ) . '</a></p>'
+		'<p><a href="http://docs.woothemes.com/document/woosidebars/?ref=' . 'woosidebars' . '" target="_blank">' . __( 'WooSidebars Documentation', 'woosidebars' ) . '</a></p>'
 		);
 	} // End add_contextual_help()
 
@@ -773,7 +777,7 @@ class Woo_Sidebars {
 	 * @return void
 	 */
 	public function load_localisation () {
-		$lang_dir = trailingslashit( str_replace( 'classes', 'lang', basename( dirname(__FILE__) ) ) );
+		$lang_dir = trailingslashit( str_replace( 'classes', 'lang', plugin_basename( dirname(__FILE__) ) ) );
 		load_plugin_textdomain( 'woosidebars', false, $lang_dir );
 	} // End load_localisation()
 
