@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * public $version
  * private $file
+ * public $upper_limit
  *
  * private $token
  * private $prefix
@@ -54,6 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Woo_Sidebars {
 	public $version;
 	private $file;
+	public $upper_limit;
 
 	private $token;
 	private $prefix;
@@ -71,6 +73,7 @@ class Woo_Sidebars {
 	public function __construct ( $file ) {
 		$this->version = '';
 		$this->file = $file;
+		$this->upper_limit = intval( apply_filters( 'woosidebars_upper_limit', 200 ) );
 
 		$this->token = 'sidebar';
 		$this->prefix = 'woo_sidebar_';
@@ -421,7 +424,7 @@ class Woo_Sidebars {
 		$sidebars = array();
 		$to_ignore = array();
 
-		$custom_sidebars = get_posts( array( 'post_type' => 'sidebar', 'numberposts' => -1, 'suppress_filters' => 'false' ) );
+		$custom_sidebars = get_posts( array( 'post_type' => 'sidebar', 'numberposts' => intval( $this->upper_limit ), 'suppress_filters' => 'false' ) );
 		if ( ! is_wp_error( $custom_sidebars ) && count( $custom_sidebars ) > 0 ) {
 			foreach ( $custom_sidebars as $k => $v ) {
 				$to_ignore[] = $v->post_name;
@@ -446,7 +449,7 @@ class Woo_Sidebars {
 	 * @return void
 	 */
 	public function register_custom_sidebars () {
-		$sidebars = get_posts( array( 'post_type' => 'sidebar', 'posts_per_page' => -1, 'suppress_filters' => 'false' ) );
+		$sidebars = get_posts( array( 'post_type' => 'sidebar', 'posts_per_page' => intval( $this->upper_limit ), 'suppress_filters' => 'false' ) );
 
 		if ( count( $sidebars ) > 0 ) {
 			foreach ( $sidebars as $k => $v ) {
@@ -486,13 +489,6 @@ class Woo_Sidebars {
 			return $sidebars_widgets;
 		}
 
-		// Determine the maximum number of sidebars to look for (2 per widget area, minus one for the wp_inactive_widgets area, which we don't use).
-		if ( is_array( $sidebars_widgets ) && 0 < count( $sidebars_widgets ) ) {
-			$total_sidebars = ( count( $sidebars_widgets ) - 1 ) * 2;
-			// Multiply by 5 to account for multiple conditions.
-			$total_sidebars = $total_sidebars * 5;
-		}
-
 	 	global $woo_custom_sidebar_data;
 
 	 	if ( ! isset( $woo_custom_sidebar_data ) ) {
@@ -501,7 +497,7 @@ class Woo_Sidebars {
 
 		 	$args = array(
 		 		'post_type' => $this->token,
-		 		'posts_per_page' => $total_sidebars,
+		 		'posts_per_page' => intval( $this->upper_limit ),
 		 		'suppress_filters' => 'false'
 		 	);
 

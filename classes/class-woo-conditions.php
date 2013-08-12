@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * public $conditions_headings
  * public $conditions_reference
  * public $meta_box_settings
+ * public $upper_limit
  * private $assets_url
  * private $plugin_url
  *
@@ -42,6 +43,7 @@ class Woo_Conditions {
 	public $conditions_headings = array();
 	public $conditions_reference = array();
 	public $meta_box_settings = array();
+	public $upper_limit;
 	private $assets_url;
 	private $plugin_url;
 
@@ -53,6 +55,7 @@ class Woo_Conditions {
 	 */
 	public function __construct () {
 		$this->meta_box_settings['title'] = __( 'Conditions', 'woosidebars' );
+		$this->upper_limit = intval( apply_filters( 'woosidebars_upper_limit', 200 ) );
 
 		if ( is_admin() && get_post_type() == $this->token || ! get_post_type() ) {
 			add_action( 'admin_menu', array( $this, 'meta_box_setup' ), 20 );
@@ -125,9 +128,9 @@ class Woo_Conditions {
 
 			foreach ( $pages as $k => $v ) {
 				$token = 'post-' . $v->ID;
-				$label = $v->post_title;
+				$label = esc_html( $v->post_title );
 				if ( 'publish' != $v->post_status ) {
-					$label .= ' <strong>(' . $post_statuses[$v->post_status] . ')</strong>';
+					$label .= ' (' . $post_statuses[$v->post_status] . ')';
 				}
 
 				$conditions['pages'][$token] = array(
@@ -183,7 +186,7 @@ class Woo_Conditions {
 
 			$conditions_headings[$k] = $v->labels->name;
 
-			$query_args = array( 'numberposts' => -1, 'post_type' => $k, 'meta_key' => '_enable_sidebar', 'meta_value' => 'yes', 'meta_compare' => '=', 'post_status' => 'any', 'suppress_filters' => 'false' );
+			$query_args = array( 'numberposts' => intval( $this->upper_limit ), 'post_type' => $k, 'meta_key' => '_enable_sidebar', 'meta_value' => 'yes', 'meta_compare' => '=', 'post_status' => 'any', 'suppress_filters' => 'false' );
 
 			$posts = get_posts( $query_args );
 
