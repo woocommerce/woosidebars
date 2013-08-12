@@ -367,6 +367,13 @@ class Woo_Conditions {
 
 		if ( is_singular() ) {
 			$this->conditions[] = 'singular';
+		}
+
+		if ( is_single() ) {
+			$this->conditions[] = 'single';
+		}
+
+		if ( is_single() || is_singular() ) {
 			$this->conditions[] = 'post-type-' . get_post_type();
 			$this->conditions[] = get_post_type();
 
