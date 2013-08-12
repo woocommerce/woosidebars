@@ -777,7 +777,7 @@ class Woo_Sidebars {
 	 * @return void
 	 */
 	public function load_localisation () {
-		$lang_dir = trailingslashit( str_replace( 'classes', 'lang', basename( dirname(__FILE__) ) ) );
+		$lang_dir = trailingslashit( str_replace( 'classes', 'lang', plugin_basename( dirname(__FILE__) ) ) );
 		load_plugin_textdomain( 'woosidebars', false, $lang_dir );
 	} // End load_localisation()
 
