@@ -2,10 +2,10 @@
 Contributors: woothemes, mattyza
 Tags: widgets, sidebars, widget-areas
 Requires at least: 3.3
-Tested up to: 3.5.1
+Tested up to: 3.6.0
 Stable tag: 1.3.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 WooSidebars adds functionality to display different widgets in a sidebar, according to a context (for example, a specific page or a category).
 
@@ -15,10 +15,9 @@ With WooSidebars, it's possible to change the widgets that display in a sidebar 
 
 [vimeo http://vimeo.com/42980663]
 
-Looking for a helping hand? [View plugin documentation](http://dojodocs.woothemes.com/woosidebars/).
+Looking for a helping hand? [View plugin documentation](http://docs.woothemes.com/documentation/plugins/woosidebars/).
 
-Looking to contribute code to this plugin? [Fork the repository over at GitHub](http://github.com/woothemes/woosidebars/).
-(submit pull requests to the "develop" branch)
+Looking to contribute code to this plugin? [Fork the repository over at GitHub](http://github.com/woothemes/woosidebars/). Please also read the CONTRIBUTING.md file, bundled within this plugin.
 
 == Installation ==
 
@@ -54,7 +53,7 @@ Automatic updates should work a charm; as always though, ensure you backup your 
 
 = Where can I find WooSidebars documentation and user guides? =
 
-For further documentation on using WooSidebars, please view the [WooSidebars Documentation](http://dojodocs.woothemes.com/woosidebars/).
+For further documentation on using WooSidebars, please view the [WooSidebars Documentation](http://docs.woothemes.com/documentation/plugins/woosidebars/).
 
 = Will WooSidebars work with my theme? =
 
@@ -85,6 +84,13 @@ Updated for WordPress 3.5+ compatibility. Adjusted "Advanced" tab logic. Fixed b
 Moved to WordPress.org. Woo! Added scope to methods and properties where missing.
 
 == Changelog ==
+
+= 1.3.0 =
+* 2013-08-12
+* Introduces woosidebars_upper_limit filter, used on all database queries, to control scaling.
+* Fixes several PHP notices for "undefined index".
+* Fixes "single" condition, where a small section of logic was missing for determining if the condition applied to the current screen being loaded.
+* Optimises admin-side JavaScript and CSS.
 
 = 1.2.2 =
 * 2013-03-08
