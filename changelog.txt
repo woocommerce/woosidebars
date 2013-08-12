@@ -3,8 +3,8 @@
 2013.04.15 - version 1.3.0
  * /assets/css/admin.css - Replace all instances of #woo-conditions with #woosidebars-conditions to match the renamed meta box. Add basic jQueryUI styling reset to prevent visual inconsistency when jQueryUI is loaded via a third-party plugin.
  * /assets/js/admin.js - Adjust the JavaScript logic to use the new "woosidebars-conditions" selector instead of "woo-conditions" for toggling advanced options on and off.
- * /classes/class-woo-conditions.php - Rename "woo-conditions" meta box to "woosidebars-conditions". Fixes display bug with the WPML "Multilingual Content Setup" meta box. Replaces all instances of &$this with $this.
- * /classes/class-woo-sidebars.php - Replaces all instances of &$this with $this.
+ * /classes/class-woo-conditions.php - Rename "woo-conditions" meta box to "woosidebars-conditions". Fixes display bug with the WPML "Multilingual Content Setup" meta box. Replaces all instances of &$this with $this. Introduces upper_limit property and woosidebars_upper_limit filter. Addresses logic for the "single" condition type.
+ * /classes/class-woo-sidebars.php - Replaces all instances of &$this with $this. Introduces upper_limit property and woosidebars_upper_limit filter.
 
 2013.03.08 - version 1.2.2
  * /classes/class-woo-sidebars.php - Changed capability for displaying the "Widget Areas" menu to use "edit_theme_options" instead of "switch_themes".
