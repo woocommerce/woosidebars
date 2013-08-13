@@ -670,11 +670,11 @@ class Woo_Conditions {
 			}
 		}
 
-		if ( isset( $_POST['conditions'] ) && ( count( $_POST['conditions'] ) > 0 ) ) {
+		if ( isset( $_POST['conditions'] ) && ( 0 < count( $_POST['conditions'] ) ) ) {
 			delete_post_meta( $post_id, '_condition' );
 
 			foreach ( $_POST['conditions'] as $k => $v ) {
-				update_post_meta( $post_id, '_condition', $v, false );
+				add_post_meta( $post_id, '_condition', $v, false );
 			}
 		}
 	} // End meta_box_save()
