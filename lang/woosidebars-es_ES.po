@@ -1,0 +1,495 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooSidebars v1.3.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-08-12 11:40:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: classes/class-woo-conditions.php:57
+#@ woosidebars
+msgid "Conditions"
+msgstr "Condiciones"
+
+#: classes/class-woo-conditions.php:127
+#: classes/class-woo-conditions.php:296
+#@ woosidebars
+msgid "Pages"
+msgstr "Paginas"
+
+#: classes/class-woo-conditions.php:138
+#, php-format
+#@ woosidebars
+msgid "The \"%s\" page"
+msgstr "El \"%s\" pagina"
+
+#: classes/class-woo-conditions.php:201
+#, php-format
+#@ woosidebars
+msgid "A custom sidebar for \"%s\""
+msgstr "Un sidebar personalizado para \"%s\""
+
+#: classes/class-woo-conditions.php:214
+#@ woosidebars
+msgid "Page Templates"
+msgstr "Plantillas de la pagina"
+
+#: classes/class-woo-conditions.php:220
+#, php-format
+#@ woosidebars
+msgid "The \"%s\" page template"
+msgstr "El \"%s\" de plantilla de la pagina"
+
+#: classes/class-woo-conditions.php:230
+#@ woosidebars
+msgid "Post Types"
+msgstr "Tipos de entradas"
+
+#: classes/class-woo-conditions.php:237
+#, php-format
+#@ woosidebars
+msgid "\"%s\" Post Type Archive"
+msgstr "\"%s\" Archivo de los tipos de publicaciones"
+
+#: classes/class-woo-conditions.php:238
+#, php-format
+#@ woosidebars
+msgid "The \"%s\" post type archive"
+msgstr "El \"%s\" archivo de los tipos publicaciones"
+
+#: classes/class-woo-conditions.php:247
+#, php-format
+#@ woosidebars
+msgid "Entries in the \"%s\" post type"
+msgstr "Entradas en el \"%s\" tipo de publicacion"
+
+#: classes/class-woo-conditions.php:264
+#@ woosidebars
+msgid "Taxonomy Archives"
+msgstr "Archivos de Taxonomia"
+
+#: classes/class-woo-conditions.php:272
+#, php-format
+#@ woosidebars
+msgid "The default \"%s\" archives"
+msgstr "Los archivos \"%s\" por defecto"
+
+#: classes/class-woo-conditions.php:281
+#, php-format
+#@ woosidebars
+msgid "The %s %s archive"
+msgstr "El archivo de %s %s"
+
+#: classes/class-woo-conditions.php:297
+#@ woosidebars
+msgid "Displayed on all pages that don't have a more specific widget area."
+msgstr "Visible en todas la paginas que no tiene un area de widgets especifica"
+
+#: classes/class-woo-conditions.php:301
+#@ woosidebars
+msgid "Search Results"
+msgstr "Resultados de la busqueda"
+
+#: classes/class-woo-conditions.php:302
+#@ woosidebars
+msgid "Displayed on search results screens."
+msgstr "Visible en los resultados de busquedas"
+
+#: classes/class-woo-conditions.php:306
+#@ woosidebars
+msgid "Default \"Your Latest Posts\" Screen"
+msgstr "Por defecto en la pagina \"Your Latest Posts\""
+
+#: classes/class-woo-conditions.php:307
+#@ woosidebars
+msgid "Displayed on the default \"Your Latest Posts\" screen."
+msgstr "Visible por defecto en la pagina \"Your Latest Posts\""
+
+#: classes/class-woo-conditions.php:311
+#@ woosidebars
+msgid "Front Page"
+msgstr "Pagina Principal"
+
+#: classes/class-woo-conditions.php:312
+#@ woosidebars
+msgid "Displayed on any front page, regardless of the settings under the \"Settings -> Reading\" admin screen."
+msgstr ""
+
+#: classes/class-woo-conditions.php:316
+#@ woosidebars
+msgid "Single Entries"
+msgstr ""
+
+#: classes/class-woo-conditions.php:317
+#@ woosidebars
+msgid "Displayed on single entries of any public post type other than \"Pages\"."
+msgstr ""
+
+#: classes/class-woo-conditions.php:321
+#@ woosidebars
+msgid "All Archives"
+msgstr "Todos los archivos"
+
+#: classes/class-woo-conditions.php:322
+#@ woosidebars
+msgid "Displayed on all archives (category, tag, taxonomy, post type, dated, author and search)."
+msgstr "Visible en todos los archivos (categoria, etiqueta, taxonomia, tipo de publicacion, fecha, autor y busqueda)."
+
+#: classes/class-woo-conditions.php:326
+#@ woosidebars
+msgid "Author Archives"
+msgstr "Archivos de autor"
+
+#: classes/class-woo-conditions.php:327
+#@ woosidebars
+msgid "Displayed on all author archive screens (that don't have a more specific sidebar)."
+msgstr ""
+
+#: classes/class-woo-conditions.php:331
+#@ woosidebars
+msgid "Date Archives"
+msgstr "Archivos por fecha"
+
+#: classes/class-woo-conditions.php:332
+#@ woosidebars
+msgid "Displayed on all date archives."
+msgstr "Visible en todos los archivos por fecha"
+
+#: classes/class-woo-conditions.php:336
+#@ woosidebars
+msgid "404 Error Screens"
+msgstr "Paginas de error 404"
+
+#: classes/class-woo-conditions.php:337
+#@ woosidebars
+msgid "Displayed on all 404 error screens."
+msgstr "Visible en todas la paginas de error 404"
+
+#: classes/class-woo-conditions.php:545
+#@ woosidebars
+msgid "Taxonomy Terms"
+msgstr "Terminos de taxonomia"
+
+#: classes/class-woo-conditions.php:554
+#@ woosidebars
+msgid "Advanced"
+msgstr "Avanzado"
+
+#: classes/class-woo-conditions.php:604
+#@ woosidebars
+msgid "Taxonomy Token"
+msgstr ""
+
+#: classes/class-woo-sidebars.php:156
+#@ woosidebars
+msgid "Widget Area"
+msgstr ""
+
+#: classes/class-woo-sidebars.php:157
+#: classes/class-woo-sidebars.php:170
+#@ woosidebars
+msgid "Widget Areas"
+msgstr ""
+
+#: classes/class-woo-sidebars.php:164
+#@ woosidebars
+msgctxt "post type general name"
+msgid "Widget Areas"
+msgstr ""
+
+#: classes/class-woo-sidebars.php:165
+#@ woosidebars
+msgctxt "post type singular name"
+msgid "Widget Area"
+msgstr ""
+
+#: classes/class-woo-sidebars.php:166
+#@ default
+msgctxt "Widget Area"
+msgid "Add New"
+msgstr "Anadir nuevo"
+
+#: classes/class-woo-sidebars.php:167
+#, php-format
+#@ woosidebars
+msgid "Add New %s"
+msgstr "Añadir nuevo %/s"
+
+#: classes/class-woo-sidebars.php:168
+#, php-format
+#@ woosidebars
+msgid "Edit %s"
+msgstr "Editar %s"
+
+#: classes/class-woo-sidebars.php:169
+#, php-format
+#@ woosidebars
+msgid "New %s"
+msgstr "Nuevo %s"
+
+#: classes/class-woo-sidebars.php:171
+#, php-format
+#@ woosidebars
+msgid "View %s"
+msgstr "Ver %s"
+
+#: classes/class-woo-sidebars.php:172
+#, php-format
+#@ woosidebars
+msgid "Search %a"
+msgstr "Buscar %a"
+
+#: classes/class-woo-sidebars.php:173
+#, php-format
+#@ woosidebars
+msgid "No %s Found"
+msgstr "%s no encontrado"
+
+#: classes/class-woo-sidebars.php:174
+#, php-format
+#@ woosidebars
+msgid "No %s Found In Trash"
+msgstr "%s no encontrado en la papelera"
+
+#: classes/class-woo-sidebars.php:225
+#@ woosidebars
+msgid "(Not in use by current theme)"
+msgstr "(No lo usa el tema actual)"
+
+#: classes/class-woo-sidebars.php:260
+#: classes/class-woo-sidebars.php:290
+#@ woosidebars
+msgid "Sidebar To Replace"
+msgstr "Sidebar a reemplazar"
+
+#: classes/class-woo-sidebars.php:260
+#@ woosidebars
+msgid "Condition(s)"
+msgstr "Condicion(es)"
+
+#: classes/class-woo-sidebars.php:297
+#: classes/class-woo-sidebars.php:379
+#@ woosidebars
+msgid "Description"
+msgstr "Descripcion"
+
+#: classes/class-woo-sidebars.php:324
+#@ woosidebars
+msgid "No sidebars are available with this theme."
+msgstr "No hay sidebars disponibles con este tema"
+
+#: classes/class-woo-sidebars.php:380
+#, php-format
+#@ woosidebars
+msgid "Add an optional description, to be displayed when adding widgets to this widget area on the %sWidgets%s screen."
+msgstr ""
+
+#: classes/class-woo-sidebars.php:393
+#@ woosidebars
+msgid "Enter widget area name here"
+msgstr "Nombre del widget are"
+
+#: classes/class-woo-sidebars.php:410
+#@ woosidebars
+msgid "Widget Area updated."
+msgstr "Widget actualizado"
+
+#: classes/class-woo-sidebars.php:641
+#@ woosidebars
+msgid "Custom Sidebars"
+msgstr "Sidebar personalizada"
+
+#: classes/class-woo-sidebars.php:687
+#@ woosidebars
+msgid "You do not have sufficient permissions to access this page."
+msgstr "No tienes suficientes permisos para acceder a esta pagina"
+
+#: classes/class-woo-sidebars.php:688
+#@ woosidebars
+msgid "You have taken too long. Please go back and retry."
+msgstr ""
+
+#: classes/class-woo-sidebars.php:747
+#@ woosidebars
+msgid "Overview"
+msgstr ""
+
+#: classes/class-woo-sidebars.php:749
+#@ woosidebars
+msgid "All custom widget areas are listed on this screen. To add a new customised widget area, click the \"Add New\" button."
+msgstr ""
+
+#: classes/class-woo-sidebars.php:753
+#@ woosidebars
+msgid "Sidebar Manager"
+msgstr "Sidebar manager"
+
+#: classes/class-woo-sidebars.php:755
+#@ woosidebars
+msgid "WooSidebars is intended to replace the Sidebar Manager found in the WooFramework. Please ensure that all sidebars have been transferred over from the Sidebar Manager, if you choose to use WooSidebars instead."
+msgstr ""
+
+#: classes/class-woo-sidebars.php:756
+#@ woosidebars
+msgid "To transfer a sidebar from the Sidebar Manager:"
+msgstr ""
+
+#: classes/class-woo-sidebars.php:758
+#@ woosidebars
+msgid "Create a new custom widget area in WooSidebars."
+msgstr "Crear nuevo widget area en WooSidebars"
+
+#: classes/class-woo-sidebars.php:759
+#, php-format
+#@ woosidebars
+msgid "Visit the %sAppearance &rarr; Widgets%s screen and drag the widgets from the old sidebar into the newly created sidebar."
+msgstr ""
+
+#: classes/class-woo-sidebars.php:760
+#@ woosidebars
+msgid "Repeat this process for each of your custom sidebars, including dependencies if necessary (the WooSidebars conditions system replaces the need for dependencies)."
+msgstr ""
+
+#: classes/class-woo-sidebars.php:761
+#@ woosidebars
+msgid "Once you are certain that you widgets have been moved across for all widget areas, remove the sidebar from the Sidebar Manager (don't forget to transfer any dependencies over as well, if necessary)."
+msgstr ""
+
+#: classes/class-woo-sidebars.php:766
+#@ woosidebars
+msgid "For more information:"
+msgstr "Para mas informacion"
+
+#: classes/class-woo-sidebars.php:768
+#@ woosidebars
+msgid "WooSidebars Documentation"
+msgstr "WooSidebars documentacion"
+
+#: classes/class-woo-conditions.php:283
+#, php-format
+#@ woosidebars
+msgid "All posts in \"%s\""
+msgstr "Todas las publicaciones en \"%s\" "
+
+#: classes/class-woo-conditions.php:283
+#, php-format
+#@ woosidebars
+msgid "All posts in the %s %s archive"
+msgstr ""
+
+#: classes/class-woo-conditions.php:292
+#@ woosidebars
+msgid "Template Hierarchy"
+msgstr "Jerarquia de la plantilla"
+
+#: integrations/integration-woocommerce.php:73
+#@ woosidebars
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: integrations/integration-woocommerce.php:88
+#@ woosidebars
+msgid "Shop Page"
+msgstr "Pagina Tienda"
+
+#: integrations/integration-woocommerce.php:89
+#@ woosidebars
+msgid "The WooCommerce \"Shop\" landing page"
+msgstr ""
+
+#: integrations/integration-woocommerce.php:93
+#@ woosidebars
+msgid "Product Categories"
+msgstr "Categorias de los productos"
+
+#: integrations/integration-woocommerce.php:94
+#@ woosidebars
+msgid "All product categories"
+msgstr "Todas las categorias de los productos"
+
+#: integrations/integration-woocommerce.php:98
+#@ woosidebars
+msgid "Product Tags"
+msgstr "Etiquetas de los prodcutos"
+
+#: integrations/integration-woocommerce.php:99
+#@ woosidebars
+msgid "All product tags"
+msgstr "Todas las etiquetas de los prodcutos"
+
+#: integrations/integration-woocommerce.php:103
+#@ woosidebars
+msgid "Products"
+msgstr "Productos"
+
+#: integrations/integration-woocommerce.php:104
+#@ woosidebars
+msgid "All products"
+msgstr "Todos los productod"
+
+#: integrations/integration-woocommerce.php:108
+#@ woosidebars
+msgid "Cart Page"
+msgstr "Carrito"
+
+#: integrations/integration-woocommerce.php:109
+#@ woosidebars
+msgid "The WooCommerce \"Cart\" page"
+msgstr "La pagina carrito de WooCommerce"
+
+#: integrations/integration-woocommerce.php:113
+#@ woosidebars
+msgid "Checkout Page"
+msgstr ""
+
+#: integrations/integration-woocommerce.php:114
+#@ woosidebars
+msgid "The WooCommerce \"Checkout\" page"
+msgstr ""
+
+#: integrations/integration-woocommerce.php:118
+#@ woosidebars
+msgid "Account Pages"
+msgstr "Paginas de usuario"
+
+#: integrations/integration-woocommerce.php:119
+#@ woosidebars
+msgid "The WooCommerce \"Account\" pages"
+msgstr ""
+
+#: integrations/integration-woocommerce.php:124
+#, php-format
+#@ woosidebars
+msgid "Products in the \"%s\" category"
+msgstr ""
+
+#: integrations/integration-woocommerce.php:125
+#, php-format
+#@ woosidebars
+msgid "Products tagged \"%s\""
+msgstr ""
+
+#: classes/class-woo-conditions.php:246
+#, php-format
+#@ woosidebars
+msgid "Each Individual %s"
+msgstr ""
+
+#: classes/class-woo-sidebars.php:767
+#@ woosidebars
+msgid "Support HelpDesk"
+msgstr ""
