@@ -2,8 +2,8 @@
 Contributors: woothemes, mattyza
 Tags: widgets, sidebars, widget-areas
 Requires at least: 3.3
-Tested up to: 3.6.0
-Stable tag: 1.3.1
+Tested up to: 3.8.0
+Stable tag: 1.4.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -71,6 +71,9 @@ Looking to contribute code to this plugin? [Fork the repository over at GitHub](
 
 == Upgrade Notice ==
 
+= 1.4.0 =
+WordPress 3.8 compatibility.
+
 = 1.3.1 =
 Bug fix to ensure multiple conditions save correctly.
 
@@ -87,6 +90,10 @@ Updated for WordPress 3.5+ compatibility. Adjusted "Advanced" tab logic. Fixed b
 Moved to WordPress.org. Woo! Added scope to methods and properties where missing.
 
 == Changelog ==
+
+= 1.4.0 =
+* 2014-01-23
+* WordPress 3.8 compatibility.
 
 = 1.3.1 =
 * 2013-08-13
