@@ -448,7 +448,13 @@ class Woo_Conditions {
 	 */
 	public function is_post_type_archive () {
 		if ( is_post_type_archive() ) {
-			$this->conditions[] = 'post-type-archive-' . get_post_type();
+
+			$post_type = get_query_var( 'post_type' );
+			if ( is_array( $post_type ) ){
+				$post_type = reset( $post_type );
+			}
+
+			$this->conditions[] = 'post-type-archive-' . $post_type;
 		}
 	} // End is_post_type_archive()
 
