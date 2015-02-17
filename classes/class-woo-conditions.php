@@ -282,6 +282,9 @@ class Woo_Conditions {
 							if ( $k == 'category' ) {
 								$conditions['taxonomy-' . $k]['in-term-' . $j->term_id] = array( 'label' => sprintf( __( 'All posts in "%s"', 'woosidebars' ), esc_html( $j->name ) ), 'description' => sprintf( __( 'All posts in the %s %s archive', 'woosidebars' ), esc_html( $j->name ), strtolower( $taxonomy->labels->name ) ) );
 							}
+							if ( $k == 'post_tag' ) {
+								$conditions['taxonomy-' . $k]['has-term-' . $j->term_id] = array( 'label' => sprintf( __( 'All posts tagged "%s"', 'woosidebars' ), esc_html( $j->name ) ), 'description' => sprintf( __( 'All posts tagged %s', 'woosidebars' ), esc_html( $j->name ) ) );
+							}
 						}
 					}
 
@@ -377,14 +380,25 @@ class Woo_Conditions {
 			$this->conditions[] = 'post-type-' . get_post_type();
 			$this->conditions[] = get_post_type();
 
+			// In Category conditions.
 			$categories = get_the_category( get_the_ID() );
 
-			if ( ! is_wp_error( $categories ) && ( count( $categories ) > 0 ) ) {
+			if ( ! is_wp_error( $categories ) && ( 0 < count( $categories ) ) ) {
 				foreach ( $categories as $k => $v ) {
 					$this->conditions[] = 'in-term-' . $v->term_id;
 				}
 			}
 
+			// Has Tag conditions.
+			$tags = get_the_tags( get_the_ID() );
+
+			if ( ! is_wp_error( $tags ) && ( 0 < count( $tags ) ) ) {
+				foreach ( $tags as $k => $v ) {
+					$this->conditions[] = 'has-term-' . $v->term_id;
+				}
+			}
+
+			// Post-specific condition.
 			$this->conditions[] = 'post' . '-' . get_the_ID();
 		}
 
@@ -448,7 +462,13 @@ class Woo_Conditions {
 	 */
 	public function is_post_type_archive () {
 		if ( is_post_type_archive() ) {
-			$this->conditions[] = 'post-type-archive-' . get_post_type();
+
+			$post_type = get_query_var( 'post_type' );
+			if ( is_array( $post_type ) ){
+				$post_type = reset( $post_type );
+			}
+
+			$this->conditions[] = 'post-type-archive-' . $post_type;
 		}
 	} // End is_post_type_archive()
 

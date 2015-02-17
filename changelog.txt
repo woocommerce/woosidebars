@@ -1,5 +1,9 @@
 *** WooSidebars Changelog ***
 
+2015.02.17 - version 1.4.0
+ * New - Adds a condition to change the widget area for all posts tagged with a selected tag.
+   /classes/class-woo-conditions.php
+
 2013.08.13 - version 1.3.1
  * /classes/class-woo-conditions.php - Re-introduce add_post_meta() instead of update_post_meta() when saving conditions. Using update_post_meta() prevents multiple conditions from being saved.
 
