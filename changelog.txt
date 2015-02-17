@@ -1,5 +1,9 @@
 *** WooSidebars Changelog ***
 
+2015.02.17 - version 1.4.1
+ * Fix - Fixes an error notice on the homepage, caused by the tag check logic.
+   /classes/class-woo-conditions.php
+
 2015.02.17 - version 1.4.0
  * New - Adds a condition to change the widget area for all posts tagged with a selected tag.
    /classes/class-woo-conditions.php
