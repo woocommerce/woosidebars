@@ -392,7 +392,7 @@ class Woo_Conditions {
 			// Has Tag conditions.
 			$tags = get_the_tags( get_the_ID() );
 
-			if ( ! is_wp_error( $tags ) && ( 0 < count( $tags ) ) ) {
+			if ( ! is_wp_error( $tags ) && is_array( $tags ) && ( 0 < count( $tags ) ) ) {
 				foreach ( $tags as $k => $v ) {
 					$this->conditions[] = 'has-term-' . $v->term_id;
 				}
