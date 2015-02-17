@@ -73,6 +73,7 @@ Looking to contribute code to this plugin? [Fork the repository over at GitHub](
 
 = 1.4.0 =
 WordPress 3.8 compatibility.
+Adds "posts tagged with" condition.
 
 = 1.3.1 =
 Bug fix to ensure multiple conditions save correctly.
@@ -92,8 +93,10 @@ Moved to WordPress.org. Woo! Added scope to methods and properties where missing
 == Changelog ==
 
 = 1.4.0 =
-* 2014-01-23
+* 2015-02-17
 * WordPress 3.8 compatibility.
+* Adds "posts tagged with" condition.
+
 
 = 1.3.1 =
 * 2013-08-13
