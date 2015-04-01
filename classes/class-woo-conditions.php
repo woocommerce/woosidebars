@@ -205,11 +205,11 @@ class Woo_Conditions {
 		}
 
 		// Page Templates
-		$conditions['templates'] = array();
-
 		$page_templates = get_page_templates();
 
 		if ( count( $page_templates ) > 0 ) {
+
+			$conditions['templates'] = array();
 
 			$conditions_headings['templates'] = __( 'Page Templates', 'woosidebars' );
 
@@ -383,7 +383,7 @@ class Woo_Conditions {
 			// In Category conditions.
 			$categories = get_the_category( get_the_ID() );
 
-			if ( ! is_wp_error( $categories ) && ( 0 < count( $categories ) ) ) {
+			if ( is_array( $categories ) && ! is_wp_error( $categories ) && ( 0 < count( $categories ) ) ) {
 				foreach ( $categories as $k => $v ) {
 					$this->conditions[] = 'in-term-' . $v->term_id;
 				}
@@ -392,7 +392,7 @@ class Woo_Conditions {
 			// Has Tag conditions.
 			$tags = get_the_tags( get_the_ID() );
 
-			if ( ! is_wp_error( $tags ) && ( 0 < count( $tags ) ) ) {
+			if ( is_array( $tags ) && ! is_wp_error( $tags ) && ( 0 < count( $tags ) ) ) {
 				foreach ( $tags as $k => $v ) {
 					$this->conditions[] = 'has-term-' . $v->term_id;
 				}
