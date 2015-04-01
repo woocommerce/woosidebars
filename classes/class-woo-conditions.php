@@ -205,11 +205,11 @@ class Woo_Conditions {
 		}
 
 		// Page Templates
-		$conditions['templates'] = array();
-
 		$page_templates = get_page_templates();
 
 		if ( count( $page_templates ) > 0 ) {
+
+			$conditions['templates'] = array();
 
 			$conditions_headings['templates'] = __( 'Page Templates', 'woosidebars' );
 
