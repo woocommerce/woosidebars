@@ -703,7 +703,7 @@ class Woo_Sidebars {
 		}
 
 		$sendback = remove_query_arg( array( 'trashed', 'untrashed', 'deleted', 'ids' ), wp_get_referer() );
-		wp_safe_redirect( $sendback );
+		wp_safe_redirect( esc_url( $sendback ) );
 	} // End enable_custom_post_sidebars()
 
 	/**
