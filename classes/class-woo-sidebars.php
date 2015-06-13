@@ -880,16 +880,16 @@ get_current_screen()->set_help_sidebar(
 							<a data-replace="<?php echo $value;  ?>" class="nav-tab"><?php echo get_the_title(str_replace('post-', '', $value)) ;
 								?></a>
 								<?php
-							} else {
-								?>
-								<?php
-							}
-						}
-					}
-				}
-				wp_reset_postdata();	
-				?>
-			</div>
+							}//end if in array
+						}//end foreach
+					}//end post while
+					?>
+				</div>
+				<?php
+			}//end if
+			wp_reset_postdata();	
+			?>
+			
 			<!-- This javascript should be moved to a js file at some point. -->
 			<script>
 				jQuery(document).ready(function($) {
