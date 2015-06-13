@@ -51,6 +51,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * - load_localisation()
  * - activation()
  * - register_plugin_version()
+ *
+ * - woosidebars_widget_tabs()
+ * - ajax_widget_areas()
  */
 class Woo_Sidebars {
 	public $version;
@@ -123,6 +126,10 @@ class Woo_Sidebars {
 
 		// Run this on activation.
 		register_activation_hook( $this->file, array( $this, 'activation' ) );
+		//new ajax tabs function action
+		add_action('wp_ajax_woosidebars_widget_tabs' ,array($this,  'woosidebars_widget_tabs' ) ); // this is for people who are logged in
+		//adds tab markup to widgets admin page.
+		add_action('widgets_admin_page' , array($this,  'ajax_widget_areas' ) );
 	} // End init()
 
 	/**
@@ -175,7 +182,7 @@ class Woo_Sidebars {
 			'parent_item_colon' => '',
 			'menu_name' => $plural
 
-		);
+			);
 		$args = array(
 			'labels' => $labels,
 			'public' => false,
@@ -191,7 +198,7 @@ class Woo_Sidebars {
 			'hierarchical' => false,
 			'menu_position' => null,
 			'supports' => $supports
-		);
+			);
 		register_post_type( $this->token, $args );
 	} // End register_post_type()
 
@@ -214,31 +221,31 @@ class Woo_Sidebars {
 		switch ( $column_name ) {
 
 			case 'sidebar_to_replace':
-				$value = '';
+			$value = '';
 
-				if ( isset( $meta['_sidebar_to_replace'] ) && ( $meta['_sidebar_to_replace'][0] != '' ) ) {
-					$value = $meta['_sidebar_to_replace'][0];
+			if ( isset( $meta['_sidebar_to_replace'] ) && ( $meta['_sidebar_to_replace'][0] != '' ) ) {
+				$value = $meta['_sidebar_to_replace'][0];
 
-					if ( isset( $sidebars[$value] ) ) {
-						$value = $sidebars[$value]['name'];
-					} else {
-						$value .= '<br /><strong>' . __( '(Not in use by current theme)', 'woosidebars' ) . '</strong>';
-					}
+				if ( isset( $sidebars[$value] ) ) {
+					$value = $sidebars[$value]['name'];
+				} else {
+					$value .= '<br /><strong>' . __( '(Not in use by current theme)', 'woosidebars' ) . '</strong>';
 				}
+			}
 
-				echo $value;
+			echo $value;
 			break;
 
 			case 'condition':
-				$value = '';
+			$value = '';
 
-				if ( isset( $meta['_condition'] ) && ( $meta['_condition'][0] != '' ) ) {
-					foreach ( $meta['_condition'] as $k => $v ) {
-						$value .= $this->multidimensional_search( $v, $this->conditions->conditions_reference ) . '<br />' . "\n";
-					}
+			if ( isset( $meta['_condition'] ) && ( $meta['_condition'][0] != '' ) ) {
+				foreach ( $meta['_condition'] as $k => $v ) {
+					$value .= $this->multidimensional_search( $v, $this->conditions->conditions_reference ) . '<br />' . "\n";
 				}
+			}
 
-				echo $value;
+			echo $value;
 			break;
 
 			default:
@@ -316,9 +323,9 @@ class Woo_Sidebars {
 
 		if ( count( $sidebars ) > 0 ) {
 			$html .= '<select name="sidebar_to_replace" class="widefat">' . "\n";
-				foreach ( $sidebars as $k => $v ) {
-					$html .= '<option value="' . $v['id'] . '"' . selected( $selected_sidebar, $v['id'], false ) . '>' . $v['name'] . '</option>' . "\n";
-				}
+			foreach ( $sidebars as $k => $v ) {
+				$html .= '<option value="' . $v['id'] . '"' . selected( $selected_sidebar, $v['id'], false ) . '>' . $v['name'] . '</option>' . "\n";
+			}
 			$html .= '</select>' . "\n";
 		} else {
 			$html .= '<p>' . __( 'No sidebars are available with this theme.', 'woosidebars' ) . '</p>';
@@ -375,10 +382,10 @@ class Woo_Sidebars {
 	 * @param object $post
 	 */
 	public function description_meta_box ( $post ) {
-	?>
-	<label class="screen-reader-text" for="excerpt"><?php _e( 'Description', 'woosidebars' ); ?></label><textarea rows="1" cols="40" name="excerpt" tabindex="6" id="excerpt"><?php echo $post->post_excerpt; // textarea_escaped ?></textarea>
-	<p><?php printf( __( 'Add an optional description, to be displayed when adding widgets to this widget area on the %sWidgets%s screen.', 'woosidebars' ), '<a href="' . esc_url( admin_url( 'widgets.php' ) ) . '">', '</a>' ); ?></p>
-	<?php
+		?>
+		<label class="screen-reader-text" for="excerpt"><?php _e( 'Description', 'woosidebars' ); ?></label><textarea rows="1" cols="40" name="excerpt" tabindex="6" id="excerpt"><?php echo $post->post_excerpt; // textarea_escaped ?></textarea>
+		<p><?php printf( __( 'Add an optional description, to be displayed when adding widgets to this widget area on the %sWidgets%s screen.', 'woosidebars' ), '<a href="' . esc_url( admin_url( 'widgets.php' ) ) . '">', '</a>' ); ?></p>
+		<?php
 	} // End description_meta_box()
 
 	/**
@@ -479,8 +486,8 @@ class Woo_Sidebars {
 	 */
 	public function replace_sidebars ( $sidebars_widgets ) {
 		if ( is_admin() ) {
-	 		return $sidebars_widgets;
-	 	}
+			return $sidebars_widgets;
+		}
 
 		// Determine the conditions to construct the query.
 		$conditions = $this->conditions->conditions;
@@ -489,75 +496,75 @@ class Woo_Sidebars {
 			return $sidebars_widgets;
 		}
 
-	 	global $woo_custom_sidebar_data;
+		global $woo_custom_sidebar_data;
 
-	 	if ( ! isset( $woo_custom_sidebar_data ) ) {
+		if ( ! isset( $woo_custom_sidebar_data ) ) {
 
-		 	$conditions_str = join( ', ', $conditions );
+			$conditions_str = join( ', ', $conditions );
 
-		 	$args = array(
-		 		'post_type' => $this->token,
-		 		'posts_per_page' => intval( $this->upper_limit ),
-		 		'suppress_filters' => 'false'
-		 	);
+			$args = array(
+				'post_type' => $this->token,
+				'posts_per_page' => intval( $this->upper_limit ),
+				'suppress_filters' => 'false'
+				);
 
-		 	$meta_query = array(
-		 					'key' => '_sidebar_to_replace',
-		 					'compare' => '!=',
-		 					'value' => ''
-		 					);
+			$meta_query = array(
+				'key' => '_sidebar_to_replace',
+				'compare' => '!=',
+				'value' => ''
+				);
 
-		 	$args['meta_query'][] = $meta_query;
+			$args['meta_query'][] = $meta_query;
 
-		 	$meta_query = array(
-		 					'key' => '_condition',
-		 					'compare' => 'IN',
-		 					'value' => $conditions
-		 					);
+			$meta_query = array(
+				'key' => '_condition',
+				'compare' => 'IN',
+				'value' => $conditions
+				);
 
-		 	$args['meta_query'][] = $meta_query;
+			$args['meta_query'][] = $meta_query;
 
-		 	$sidebars = get_posts( $args );
+			$sidebars = get_posts( $args );
 
-		 	if ( count( $sidebars ) > 0 ) {
-		 		foreach ( $sidebars as $k => $v ) {
-		 			$to_replace = get_post_meta( $v->ID, '_sidebar_to_replace', true );
-		 			$sidebars[$k]->to_replace = $to_replace;
+			if ( count( $sidebars ) > 0 ) {
+				foreach ( $sidebars as $k => $v ) {
+					$to_replace = get_post_meta( $v->ID, '_sidebar_to_replace', true );
+					$sidebars[$k]->to_replace = $to_replace;
 
-		 			$conditions = get_post_meta( $v->ID, '_condition', false );
+					$conditions = get_post_meta( $v->ID, '_condition', false );
 
-		 			$sidebars[$k]->conditions = array();
+					$sidebars[$k]->conditions = array();
 
 		 			// Remove any irrelevant conditions from the array.
-		 			if ( is_array( $conditions ) ) {
-		 				foreach ( $conditions as $i => $j ) {
-		 					if ( in_array( $j, $this->conditions->conditions ) ) {
-		 						$sidebars[$k]->conditions[] = $j;
-		 					}
-		 				}
-		 			}
+					if ( is_array( $conditions ) ) {
+						foreach ( $conditions as $i => $j ) {
+							if ( in_array( $j, $this->conditions->conditions ) ) {
+								$sidebars[$k]->conditions[] = $j;
+							}
+						}
+					}
 
-		 		}
-		 	}
+				}
+			}
 
-		 	$woo_custom_sidebar_data = $sidebars;
-	 	}
+			$woo_custom_sidebar_data = $sidebars;
+		}
 
 		// Make sure only the most appropriate sidebars are kept.
 		// $woo_custom_sidebar_data = $this->remove_unwanted_sidebars( $woo_custom_sidebar_data );
 		$woo_custom_sidebar_data = $this->find_best_sidebars( $woo_custom_sidebar_data );
 
-	 	if ( count( $woo_custom_sidebar_data ) > 0 ) {
-	 		foreach ( $woo_custom_sidebar_data as $k => $v ) {
-	 			$sidebar_id = $v->post_name;
+		if ( count( $woo_custom_sidebar_data ) > 0 ) {
+			foreach ( $woo_custom_sidebar_data as $k => $v ) {
+				$sidebar_id = $v->post_name;
 				// $sidebar_id = $this->prefix . $v->ID;
-	 			if ( isset( $sidebars_widgets[$sidebar_id] ) && isset( $v->to_replace ) && $v->to_replace != '' ) {
-				 	$widgets = $sidebars_widgets[$sidebar_id];
+				if ( isset( $sidebars_widgets[$sidebar_id] ) && isset( $v->to_replace ) && $v->to_replace != '' ) {
+					$widgets = $sidebars_widgets[$sidebar_id];
 					unset( $sidebars_widgets[$sidebar_id] );
 					$sidebars_widgets[$v->to_replace] = $widgets;
 				}
-	 		}
-	 	}
+			}
+		}
 
 		return $sidebars_widgets;
 	} // End replace_sidebars()
@@ -656,19 +663,19 @@ class Woo_Sidebars {
 
 		switch ( $column_name ) {
 			case 'woosidebars_enable':
-				$image = 'success-off';
-				$value = '';
-				$class = 'custom-sidebars-disabled';
+			$image = 'success-off';
+			$value = '';
+			$class = 'custom-sidebars-disabled';
 
-				if ( isset( $meta['_enable_sidebar'] ) && ( $meta['_enable_sidebar'][0] != '' ) && ( $meta['_enable_sidebar'][0] == 'yes' ) ) {
-					$image = 'success';
-					$class = 'custom-sidebars-enabled';
-				}
+			if ( isset( $meta['_enable_sidebar'] ) && ( $meta['_enable_sidebar'][0] != '' ) && ( $meta['_enable_sidebar'][0] == 'yes' ) ) {
+				$image = 'success';
+				$class = 'custom-sidebars-enabled';
+			}
 
-				$url = wp_nonce_url( admin_url( 'admin-ajax.php?action=woosidebars-post-enable&post_id=' . $post->ID ), 'woosidebars-post-enable' );
-				$value = '<span class="' . esc_attr( $class ) . '"><a href="' . esc_url( $url ) . '"><img src="' . esc_url( $this->assets_url . '/images/' . $image . '.png' ) . '" /></a></span>';
+			$url = wp_nonce_url( admin_url( 'admin-ajax.php?action=woosidebars-post-enable&post_id=' . $post->ID ), 'woosidebars-post-enable' );
+			$value = '<span class="' . esc_attr( $class ) . '"><a href="' . esc_url( $url ) . '"><img src="' . esc_url( $this->assets_url . '/images/' . $image . '.png' ) . '" /></a></span>';
 
-				echo $value;
+			echo $value;
 			break;
 
 			default:
@@ -716,19 +723,19 @@ class Woo_Sidebars {
 	 */
 	public function multidimensional_search ( $needle, $haystack ) {
 		if (empty( $needle ) || empty( $haystack ) ) {
-            return false;
-        }
+			return false;
+		}
 
-        foreach ( $haystack as $key => $value ) {
-            $exists = 0;
-        	foreach ( (array)$needle as $nkey => $nvalue) {
-                if ( ! empty( $value[$nvalue] ) && is_array( $value[$nvalue] ) ) {
-                    return $value[$nvalue]['label'];
-                }
-            }
-        }
+		foreach ( $haystack as $key => $value ) {
+			$exists = 0;
+			foreach ( (array)$needle as $nkey => $nvalue) {
+				if ( ! empty( $value[$nvalue] ) && is_array( $value[$nvalue] ) ) {
+					return $value[$nvalue]['label'];
+				}
+			}
+		}
 
-        return false;
+		return false;
 	} // End multidimensional_search()
 
 	/**
@@ -743,15 +750,15 @@ class Woo_Sidebars {
 		if ( get_current_screen()->id != 'edit-sidebar' ) { return; }
 
 		get_current_screen()->add_help_tab( array(
-		'id'		=> 'overview',
-		'title'		=> __( 'Overview', 'woosidebars' ),
-		'content'	=>
+			'id'		=> 'overview',
+			'title'		=> __( 'Overview', 'woosidebars' ),
+			'content'	=>
 			'<p>' . __( 'All custom widget areas are listed on this screen. To add a new customised widget area, click the "Add New" button.', 'woosidebars' ) . '</p>'
-		) );
+			) );
 		get_current_screen()->add_help_tab( array(
-		'id'		=> 'wooframework-sbm',
-		'title'		=> __( 'Sidebar Manager', 'woosidebars' ),
-		'content'	=>
+			'id'		=> 'wooframework-sbm',
+			'title'		=> __( 'Sidebar Manager', 'woosidebars' ),
+			'content'	=>
 			'<p>' . __( 'WooSidebars is intended to replace the Sidebar Manager found in the WooFramework. Please ensure that all sidebars have been transferred over from the Sidebar Manager, if you choose to use WooSidebars instead.', 'woosidebars' ) . '</p>' .
 			'<p>' . __( 'To transfer a sidebar from the Sidebar Manager:', 'woosidebars' ) . '</p>' .
 			'<ul>' . "\n" .
@@ -760,13 +767,13 @@ class Woo_Sidebars {
 			'<li>' . __( 'Repeat this process for each of your custom sidebars, including dependencies if necessary (the WooSidebars conditions system replaces the need for dependencies).', 'woosidebars' ) . '</li>' . "\n" .
 			'<li>' . __( 'Once you are certain that you widgets have been moved across for all widget areas, remove the sidebar from the Sidebar Manager (don\'t forget to transfer any dependencies over as well, if necessary).', 'woosidebars' ) . '</li>' . "\n" .
 			'</ul>' . "\n"
-		) );
+			) );
 
-		get_current_screen()->set_help_sidebar(
-		'<p><strong>' . __( 'For more information:', 'woosidebars' ) . '</strong></p>' .
-		'<p><a href="http://support.woothemes.com/?ref=' . 'woosidebars' . '" target="_blank">' . __( 'Support HelpDesk', 'woosidebars' ) . '</a></p>' .
-		'<p><a href="http://docs.woothemes.com/document/woosidebars/?ref=' . 'woosidebars' . '" target="_blank">' . __( 'WooSidebars Documentation', 'woosidebars' ) . '</a></p>'
-		);
+get_current_screen()->set_help_sidebar(
+	'<p><strong>' . __( 'For more information:', 'woosidebars' ) . '</strong></p>' .
+	'<p><a href="http://support.woothemes.com/?ref=' . 'woosidebars' . '" target="_blank">' . __( 'Support HelpDesk', 'woosidebars' ) . '</a></p>' .
+	'<p><a href="http://docs.woothemes.com/document/woosidebars/?ref=' . 'woosidebars' . '" target="_blank">' . __( 'WooSidebars Documentation', 'woosidebars' ) . '</a></p>'
+	);
 	} // End add_contextual_help()
 
 	/**
@@ -804,5 +811,108 @@ class Woo_Sidebars {
 			update_option( 'woosidebars' . '-version', $this->version );
 		}
 	} // End register_plugin_version()
+
+	/**
+	 *  enables hiding and showing of sidebars on the admin widget page.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function woosidebars_widget_tabs() {
+    // The $_REQUEST contains all the data sent via ajax
+		if ( isset($_REQUEST) ) {
+			$replace = $_REQUEST['replace'];
+			$sidebars = array();
+			//query post meta table to find conditions related to replaced sidebar. 
+			$query_args = array(
+				'post_type' => 'sidebar',
+				'post_status'=>'publish' , 
+				'meta_query' => array(
+					array(
+						'key' => '_condition',
+						'value' => "$replace" ,
+						'compare' => '=',
+						)
+					)
+				);
+			query_posts( $query_args );
+
+			/* The Loop. */
+			if ( have_posts() ) {
+				while ( have_posts() ) { 
+					the_post(); 
+					//pushes replaced sidebars that are foud in query to array
+					array_push($sidebars, get_post_meta(get_the_id(), '_sidebar_to_replace' , true));
+				}
+			}
+			wp_reset_postdata(); 
+			//array values are parsed to json format and returned to ajax_widget_area function.
+		echo json_encode($sidebars); // result may contain multiple rows
+	} // End woosidebars_widget_tabs() 
+	die();
+}
+
+	/**
+	 * enabales conditional tabs in widget admin area.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function ajax_widget_areas() {
+		//Query to display all sidebar conditionals in widget admin area.
+		$args = array(
+			'post_type'  => 'sidebar'
+			);
+		query_posts( $args );
+		if ( have_posts() ) {
+			$conditions = array();
+			?>
+			<div class="nav-tab-wrapper">
+				<a href data-replace="_all" class="nav-tab nav-tab-active">All</a>
+				<?php
+				$pages = array();
+				while ( have_posts() ) {the_post(); 
+					global $post;
+					foreach (get_post_meta( $post->ID, '_condition', false ) as $value) {
+						if (!in_array($value, $pages)) {
+							array_push($pages, $value);
+							?>
+							<a data-replace="<?php echo $value;  ?>" class="nav-tab"><?php echo get_the_title(str_replace('post-', '', $value)) ;
+								?></a>
+								<?php
+							}//end if in array
+						}//end foreach
+					}//end post while
+					?>
+				</div>
+				<?php
+			}//end if
+			wp_reset_postdata();	
+			?>
+			
+			<!-- This javascript should be moved to a js file at some point. -->
+			<script>
+				jQuery(document).ready(function($) {
+					jQuery(document).on('click', '.nav-tab', function(event) {
+						jQuery('.nav-tab').removeClass('nav-tab-active');
+						event.preventDefault();
+						jQuery(this).addClass('nav-tab-active');
+						jQuery.ajax({
+							url: ajaxurl,
+							type: 'POST',
+							dataType: 'json',
+							data: {action: 'woosidebars_widget_tabs' , replace : jQuery(this).data('replace')},
+						})
+						.done(function(data) {
+							jQuery('.widgets-holder-wrap').stop(true,true).show();
+							for (var i = data.length - 1; i >= 0; i--) {
+								jQuery('#'+data[i]).parent('div').stop(true,true).hide();
+							};	
+						});			
+					});
+				});</script>
+				<?php
+		} // End ajax_widget_areas()
+
 } // End Class
 ?>
