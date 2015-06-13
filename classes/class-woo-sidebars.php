@@ -904,9 +904,9 @@ get_current_screen()->set_help_sidebar(
 							data: {action: 'woosidebars_widget_tabs' , replace : jQuery(this).data('replace')},
 						})
 						.done(function(data) {
-							jQuery('.widgets-holder-wrap').fadeIn();
+							jQuery('.widgets-holder-wrap').stop(true,true).show();
 							for (var i = data.length - 1; i >= 0; i--) {
-								jQuery('#'+data[i]).parent('div').fadeOut();
+								jQuery('#'+data[i]).parent('div').stop(true,true).hide();
 							};	
 						});			
 					});
