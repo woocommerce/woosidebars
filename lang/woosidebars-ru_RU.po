@@ -1,0 +1,554 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooSidebars 1.4.2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/woosidebars\n"
+"POT-Creation-Date: 2015-07-29 00:32+0300\n"
+"PO-Revision-Date: 2015-07-29 02:39+0300\n"
+"Last-Translator: Alexander Popov <alxzaur@gmail.com>\n"
+"Language-Team: \n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.8.3\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: classes\n"
+"X-Poedit-SearchPath-1: integrations\n"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:57
+msgid "Conditions"
+msgstr "Условия"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:127 classes/class-woo-conditions.php:299
+msgid "Pages"
+msgstr "Страницы"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:138
+msgid "The \"%s\" page"
+msgstr "Страница \"%s\""
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:201
+msgid "A custom sidebar for \"%s\""
+msgstr "Пользовательская боковая панель для \"%s\""
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:214
+msgid "Page Templates"
+msgstr "Шаблоны страниц"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:220
+msgid "The \"%s\" page template"
+msgstr "Шаблон страницы \"%s\""
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:230
+msgid "Post Types"
+msgstr "Типы записей"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:237
+msgid "\"%s\" Post Type Archive"
+msgstr "Архив записей типа \"%s\""
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:238
+msgid "The \"%s\" post type archive"
+msgstr "Архив записей типа \"%s\""
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:246
+msgid "Each Individual %s"
+msgstr "Отдельная запись типа \"%s\""
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:247
+msgid "Entries in the \"%s\" post type"
+msgstr "Записи типа \"%s\""
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:264
+msgid "Taxonomy Archives"
+msgstr "Архивы таксономий"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:272
+msgid "The default \"%s\" archives"
+msgstr "Архивы \"%s\" по умолчанию"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:281
+msgid "The %s %s archive"
+msgstr "Архив %s %s"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:283
+msgid "All posts in \"%s\""
+msgstr "Все записи в \"%s\""
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:283
+msgid "All posts in the %s %s archive"
+msgstr "Все записи в архиве %s %s"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:286
+msgid "All posts tagged \"%s\""
+msgstr "Все записи с меткой \"%s\""
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:286
+msgid "All posts tagged %s"
+msgstr "Все записи с меткой %s"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:295
+msgid "Template Hierarchy"
+msgstr "Иерархия шаблонов"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:300
+msgid "Displayed on all pages that don't have a more specific widget area."
+msgstr ""
+"Отображается на всех страницах, не имеющих более специфичной области "
+"виджетов."
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:304
+msgid "Search Results"
+msgstr "Результаты поиска"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:305
+msgid "Displayed on search results screens."
+msgstr "Отображается на страницах результатов поиска."
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:309
+msgid "Default \"Your Latest Posts\" Screen"
+msgstr "Страница последних записей"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:310
+msgid "Displayed on the default \"Your Latest Posts\" screen."
+msgstr "Отображается на странице последних записей по умолчанию."
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:314
+msgid "Front Page"
+msgstr "Главная страница"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:315
+msgid ""
+"Displayed on any front page, regardless of the settings under the \"Settings "
+"-> Reading\" admin screen."
+msgstr ""
+"Отображается на любой главной странице, в зависимости от настроек в разделе "
+"\"Настройки -> Чтение\"."
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:319
+msgid "Single Entries"
+msgstr "Отдельные записи"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:320
+msgid ""
+"Displayed on single entries of any public post type other than \"Pages\"."
+msgstr "Отображается на странице любого публичного типа записи, кроме страниц."
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:324
+msgid "All Archives"
+msgstr "Все архивы"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:325
+msgid ""
+"Displayed on all archives (category, tag, taxonomy, post type, dated, author "
+"and search)."
+msgstr ""
+"Отображается во всех архивах (рубрика, метка, таксономия, тип записи, дата, "
+"автор и поиск)."
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:329
+msgid "Author Archives"
+msgstr "Архивы автора"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:330
+msgid ""
+"Displayed on all author archive screens (that don't have a more specific "
+"sidebar)."
+msgstr ""
+"Отображается на всех страницах архива авторов, не имеющих более специфичной "
+"боковой панели."
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:334
+msgid "Date Archives"
+msgstr "Архивы дат"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:335
+msgid "Displayed on all date archives."
+msgstr "Отображается во всех архивах дат."
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:339
+msgid "404 Error Screens"
+msgstr "Страницы ошибок 404"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:340
+msgid "Displayed on all 404 error screens."
+msgstr "Отображается на всех страницах ошибок 404."
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:565
+msgid "Taxonomy Terms"
+msgstr "Термины таксономии"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:574
+msgid "Advanced"
+msgstr "Дополнительно"
+
+# @ woosidebars
+#: classes/class-woo-conditions.php:624
+msgid "Taxonomy Token"
+msgstr "Токен таксономии"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:156
+msgid "Widget Area"
+msgstr "Область виджетов"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:157 classes/class-woo-sidebars.php:170
+msgid "Widget Areas"
+msgstr "Области виджетов"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:164
+msgctxt "post type general name"
+msgid "Widget Areas"
+msgstr "Области виджетов"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:165
+msgctxt "post type singular name"
+msgid "Widget Area"
+msgstr "Область виджетов"
+
+# @ default
+#: classes/class-woo-sidebars.php:166
+msgctxt "Widget Area"
+msgid "Add New"
+msgstr "Добавить новую"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:167
+msgid "Add New %s"
+msgstr "Добавить новую %s"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:168
+msgid "Edit %s"
+msgstr "Редактировать %s"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:169
+msgid "New %s"
+msgstr "Новая %s"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:171
+msgid "View %s"
+msgstr "Просмотреть %s"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:172
+msgid "Search %a"
+msgstr "Искать %a"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:173
+msgid "No %s Found"
+msgstr "Не найдены %s"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:174
+msgid "No %s Found In Trash"
+msgstr "Не найдены %s в корзине"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:225
+msgid "(Not in use by current theme)"
+msgstr "(Не используется активной темой)"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:260 classes/class-woo-sidebars.php:290
+msgid "Sidebar To Replace"
+msgstr "Боковая панель для замены"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:260
+msgid "Condition(s)"
+msgstr "Условия"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:297 classes/class-woo-sidebars.php:379
+msgid "Description"
+msgstr "Описание"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:324
+msgid "No sidebars are available with this theme."
+msgstr "Эта тема не поддерживает боковые панели."
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:380
+msgid ""
+"Add an optional description, to be displayed when adding widgets to this "
+"widget area on the %sWidgets%s screen."
+msgstr ""
+"Необязательное описание, которое отображается при добавлении виджетов в эту "
+"область на странице %sвиджетов%s."
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:393
+msgid "Enter widget area name here"
+msgstr "Введите здесь имя для области виджетов"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:410
+msgid "Widget Area updated."
+msgstr "Область виджетов обновлена."
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:641
+msgid "Custom Sidebars"
+msgstr "Пользовательские боковые панели"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:687
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Вы не имеете прав, достаточных для доступа к этой странице."
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:688
+msgid "You have taken too long. Please go back and retry."
+msgstr ""
+"Вы использовали слишком много времени. Пожалуйста, вернитесь назад и "
+"повторите попытку."
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:747
+msgid "Overview"
+msgstr "Обзор"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:749
+msgid ""
+"All custom widget areas are listed on this screen. To add a new customised "
+"widget area, click the \"Add New\" button."
+msgstr ""
+"Все пользовательские области виджетов перечислены на этой странице. Чтобы "
+"добавить новую модифицированную область виджетов, нажмите кнопку \"Добавить "
+"новую\"."
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:753
+msgid "Sidebar Manager"
+msgstr "Менеджер боковых панелей"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:755
+msgid ""
+"WooSidebars is intended to replace the Sidebar Manager found in the "
+"WooFramework. Please ensure that all sidebars have been transferred over "
+"from the Sidebar Manager, if you choose to use WooSidebars instead."
+msgstr ""
+"WooSidebars предназначен для замены менеджера боковых панелей в "
+"WooFramework. Пожалуйста, убедитесь, что все боковые панели были перенесены "
+"из менеджера боковых панелей, если вы хотите использовать вместо него "
+"WooSidebars."
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:756
+msgid "To transfer a sidebar from the Sidebar Manager:"
+msgstr "Чтобы перенести боковую панель из менеджера:"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:758
+msgid "Create a new custom widget area in WooSidebars."
+msgstr "Создайте новую область виджетов в WooSidebars."
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:759
+msgid ""
+"Visit the %sAppearance &rarr; Widgets%s screen and drag the widgets from the "
+"old sidebar into the newly created sidebar."
+msgstr ""
+"Перейдите на страницу %sВнешний вид &rarr; Виджеты%s и перетащите виджеты из "
+"старой боковой панели в созданную."
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:760
+msgid ""
+"Repeat this process for each of your custom sidebars, including dependencies "
+"if necessary (the WooSidebars conditions system replaces the need for "
+"dependencies)."
+msgstr ""
+"Повторите эту процедуру для каждой из ваших боковых панелей, включая "
+"зависимые, если это необходимо (система условий WooSidebars заменяет "
+"использование зависимостей)."
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:761
+msgid ""
+"Once you are certain that you widgets have been moved across for all widget "
+"areas, remove the sidebar from the Sidebar Manager (don't forget to transfer "
+"any dependencies over as well, if necessary)."
+msgstr ""
+"Когда вы будете уверены, что ваши виджеты во всех областях виджетов были "
+"перенесены, удалите боковую панель из менеджера (не забудьте перенести все "
+"необходимые зависимости)."
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:766
+msgid "For more information:"
+msgstr "Дополнительная информация:"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:767
+msgid "Support HelpDesk"
+msgstr "Поддержка HelpDesk"
+
+# @ woosidebars
+#: classes/class-woo-sidebars.php:768
+msgid "WooSidebars Documentation"
+msgstr "Документация WooSidebars"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:73
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:88
+msgid "Shop Page"
+msgstr "Страница магазина"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:89
+msgid "The WooCommerce \"Shop\" landing page"
+msgstr "Целевая страница магазина WooCommerce"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:93
+msgid "Product Categories"
+msgstr "Категории продуктов"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:94
+msgid "All product categories"
+msgstr "Все категории продуктов"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:98
+msgid "Product Tags"
+msgstr "Метки продуктов"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:99
+msgid "All product tags"
+msgstr "Все метки продуктов"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:103
+msgid "Products"
+msgstr "Продукты"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:104
+msgid "All products"
+msgstr "Все продукты"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:108
+msgid "Cart Page"
+msgstr "Корзина"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:109
+msgid "The WooCommerce \"Cart\" page"
+msgstr "Страница корзины WooCommerce"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:113
+msgid "Checkout Page"
+msgstr "Страница оплаты"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:114
+msgid "The WooCommerce \"Checkout\" page"
+msgstr "Страница оплаты WooCommerce"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:118
+msgid "Account Pages"
+msgstr "Страницы аккаунтов"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:119
+msgid "The WooCommerce \"Account\" pages"
+msgstr "Страницы профилей пользователей WooCommerce"
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:124
+msgid "Products in the \"%s\" category"
+msgstr "Продукты в категории \"%s\""
+
+# @ woosidebars
+#: integrations/integration-woocommerce.php:125
+msgid "Products tagged \"%s\""
+msgstr "Продукты с меткой \"%s\""
+
+# @ woosidebars
+#. Plugin Name of the plugin/theme
+msgid "WooSidebars"
+msgstr "WooSidebars"
+
+#. Plugin URI of the plugin/theme
+msgid "http://woothemes.com/woosidebars/"
+msgstr "http://woothemes.com/woosidebars/"
+
+#. Description of the plugin/theme
+msgid ""
+"Replace widget areas in your theme for specific pages, archives and other "
+"sections of WordPress."
+msgstr ""
+"Заменяет области виджетов в вашей теме для указанных страниц, архивов и "
+"других разделах WordPress."
+
+#. Author of the plugin/theme
+msgid "WooThemes"
+msgstr "WooThemes"
+
+#. Author URI of the plugin/theme
+msgid "http://woothemes.com/"
+msgstr "http://woothemes.com/"
