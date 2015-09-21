@@ -8,6 +8,8 @@
  * Version: 1.4.2
  * Stable tag: 1.4.2
  * License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * Text Domain: woosidebars
+ * Domain Path: /lang
  */
 
  if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
