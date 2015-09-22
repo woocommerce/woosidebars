@@ -579,7 +579,9 @@ class Woo_Conditions {
 				$tab = '';
 
 				$tab .= '<div id="tab-' . esc_attr( $k ) . '" class="condition-tab">' . "\n";
-				$tab .= '<h4>' . esc_html( $this->conditions_headings[$k] ) . '</h4>' . "\n";
+				if ( isset( $this->conditions_headings[$k] ) ) {
+					$tab .= '<h4>' . esc_html( $this->conditions_headings[$k] ) . '</h4>' . "\n";
+				}
 				$tab .= '<ul class="alignleft conditions-column">' . "\n";
 					foreach ( $v as $i => $j ) {
 						$count++;
