@@ -1,8 +1,12 @@
 *** WooSidebars Changelog ***
 
-2015-04-22 - version 1.4.2
-* Security Fix - remove_query_arg vulnerability
-  /classes/class-woo-sidebars.php
+2015.09.22 - version 1.4.3
+ * Fix - Ensures condition headings are present before attempting to output in the conditions meta box.
+   /classes/class-woo-conditions.php
+
+2015.04.22 - version 1.4.2
+ * Security Fix - remove_query_arg vulnerability
+   /classes/class-woo-sidebars.php
 
 2015.02.17 - version 1.4.1
  * Fix - Fixes an error notice on the homepage, caused by the tag check logic.
