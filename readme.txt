@@ -13,8 +13,6 @@ WooSidebars adds functionality to display different widgets in a sidebar, accord
 
 With WooSidebars, it's possible to change the widgets that display in a sidebar (widgetized area) according to a context (for example, a specific page, a specific blog post, certain categories or the search results screen). Setting up a custom widget area to display across multiple conditions is as easy as a few clicks.
 
-[vimeo http://vimeo.com/42980663]
-
 Looking for a helping hand? [View plugin documentation](http://docs.woothemes.com/documentation/plugins/woosidebars/).
 
 Looking to contribute code to this plugin? [Fork the repository over at GitHub](http://github.com/woothemes/woosidebars/). Please also read the CONTRIBUTING.md file, bundled within this plugin.
