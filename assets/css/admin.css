@@ -7,7 +7,8 @@
 .woo-conditions .conditions-tabs li.alignright { float: right; }
 .woo-conditions .conditions-tabs li.hide { display: none; }
 .woo-conditions .conditions-tabs li.advanced-settings { margin-right: 1em; }
-.woo-conditions .conditions-tabs li.advanced-settings a { background-image: url(../images/icon-settings.png); background-repeat: no-repeat; background-position: 8px 50%; padding-left: 30px; }
+.woo-conditions .conditions-tabs li.advanced-settings a { padding-top: 3px; }
+.woo-conditions .conditions-tabs li.advanced-settings a span:before { color: #999; content: "\f111"; font-family: "Dashicons"; font-size: 1.1rem; margin-right: 0.5rem; position: relative; top: 4px; }
 .woo-conditions .conditions-tabs li a { padding:0;margin:0;border:0;border:1px solid #d5d5d5;border-bottom:0;float:left;padding:9px 9px;background:#ececec;text-decoration:none;color:#555; }
 .woo-conditions .conditions-tabs li.ui-state-active {}
 .woo-conditions .conditions-tabs li.ui-state-active a { background: #f8f8f8; color: #555; padding: 0; }

@@ -571,7 +571,7 @@ class Woo_Conditions {
 
 				$html .= '</ul>' . "\n";
 
-				$html .= '<ul class="conditions-tabs"><li class="advanced-settings alignright hide-if-no-js"><a href="#">' . __( 'Advanced', 'woosidebars' ) . '</a></li></ul>' . "\n";
+				$html .= '<ul class="conditions-tabs"><li class="advanced-settings alignright hide-if-no-js"><a href="#"><span>' . __( 'Advanced', 'woosidebars' ) . '</span></a></li></ul>' . "\n";
 
 			foreach ( $this->conditions_reference as $k => $v ) {
 				$count = 0;
