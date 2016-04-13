@@ -605,12 +605,12 @@ class Woo_Sidebars {
 
 		if ( in_array( $pagenow, array( 'edit.php', 'post.php', 'post-new.php' ) ) ) {
 			if ( get_post_type() != $this->token ) { return; }
-			wp_enqueue_style( 'jquery-ui-tabs' );
 
-			wp_register_style( $this->token . '-admin', $this->assets_url . '/css/admin.css', array(), '1.0.0' );
+			wp_register_style( $this->token . '-admin', $this->assets_url . '/css/admin.css', array( 'dashicons' ), '1.0.0' );
 			wp_enqueue_style( $this->token . '-admin' );
 
 			wp_dequeue_style( 'jquery-ui-datepicker' );
+			wp_dequeue_style( 'jquery-ui' );
 
 			if ( class_exists( 'WPSEO_Metabox' ) ) {
 				// Dequeue unused WordPress SEO CSS files.
