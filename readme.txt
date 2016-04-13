@@ -69,6 +69,9 @@ Looking to contribute code to this plugin? [Fork the repository over at GitHub](
 
 == Upgrade Notice ==
 
+= 1.4.4 =
+Adjusts the conditions box styling and UI for WordPress 4.5 compatibility.
+
 = 1.4.3 =
 Bug fix and maintenance release.
 
@@ -98,6 +101,10 @@ Updated for WordPress 3.5+ compatibility. Adjusted "Advanced" tab logic. Fixed b
 Moved to WordPress.org. Woo! Added scope to methods and properties where missing.
 
 == Changelog ==
+
+= 1.4.4 =
+* 2016-04-13
+* Adjusts the conditions box styling and UI for WordPress 4.5 compatibility.
 
 = 1.4.3 =
 * 2015-09-22
