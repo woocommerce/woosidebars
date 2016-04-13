@@ -1,3 +1,5 @@
 /* Custom Column On Posts, etc */
-
-.column-woosidebars_enable { width: 12%; }
+.column-woosidebars_enable { width: 5.5em; }
+.column-woosidebars_enable a .dashicons:before { font-size: 1.4rem; font-weight: bold; }
+.column-woosidebars_enable .custom-sidebars-disabled a { color: #CCC; }
+.column-woosidebars_enable .custom-sidebars-enabled a { color: #000; }

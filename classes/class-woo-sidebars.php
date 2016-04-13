@@ -84,6 +84,8 @@ class Woo_Sidebars {
 
 		$this->conditions = new Woo_Conditions();
 		$this->conditions->token = $this->token;
+
+		add_action( 'plugins_loaded', array( $this, 'init' ) );
 	} // End __construct()
 
 	/**
@@ -106,7 +108,7 @@ class Woo_Sidebars {
 		if ( is_admin() ) {
 			global $pagenow;
 
-			add_action( 'admin_print_styles', array( $this, 'enqueue_styles' ), 12 );
+			add_action( 'admin_print_styles', array( $this, 'enqueue_styles' ) );
 			add_action( 'admin_head', array( $this, 'add_contextual_help' ) );
 			if ( $pagenow == 'edit.php' && isset( $_GET['post_type'] ) && esc_attr( $_GET['post_type'] ) == $this->token ) {
 				add_filter( 'manage_edit-' . $this->token . '_columns', array( $this, 'register_custom_column_headings' ), 10, 1 );
@@ -603,6 +605,9 @@ class Woo_Sidebars {
 	public function enqueue_styles () {
 		global $pagenow;
 
+		wp_register_style( $this->token . '-admin-posts', $this->assets_url . '/css/admin-posts.css', false, '1.4.4' );
+		wp_enqueue_style( $this->token . '-admin-posts' );
+
 		if ( in_array( $pagenow, array( 'edit.php', 'post.php', 'post-new.php' ) ) ) {
 			if ( get_post_type() != $this->token ) { return; }
 
@@ -623,11 +628,6 @@ class Woo_Sidebars {
 				wp_dequeue_style( 'metabox-' . $color );
 			}
 		}
-
-		if ( in_array( $pagenow, array( 'edit.php' ) ) ) {
-			wp_register_style( $this->token . '-admin-posts', $this->assets_url . '/css/admin-posts.css', array(), '1.0.0' );
-			wp_enqueue_style( $this->token . '-admin-posts' );
-		}
 	} // End enqueue_styles()
 
 	/**
@@ -638,7 +638,7 @@ class Woo_Sidebars {
 	 * @return array $new_columns
 	 */
 	public function add_post_column_headings ( $defaults ) {
-		$defaults['woosidebars_enable'] = __( 'Custom Sidebars', 'woosidebars' );
+		$defaults['woosidebars_enable'] = '<span class="dashicons dashicons-layout" title="' . __( 'Custom Sidebars', 'woosidebars' ) . '"></span>';
 		return $defaults;
 	} // End add_post_column_headings()
 
@@ -656,17 +656,15 @@ class Woo_Sidebars {
 
 		switch ( $column_name ) {
 			case 'woosidebars_enable':
-				$image = 'success-off';
 				$value = '';
 				$class = 'custom-sidebars-disabled';
 
 				if ( isset( $meta['_enable_sidebar'] ) && ( $meta['_enable_sidebar'][0] != '' ) && ( $meta['_enable_sidebar'][0] == 'yes' ) ) {
-					$image = 'success';
 					$class = 'custom-sidebars-enabled';
 				}
 
 				$url = wp_nonce_url( admin_url( 'admin-ajax.php?action=woosidebars-post-enable&post_id=' . $post->ID ), 'woosidebars-post-enable' );
-				$value = '<span class="' . esc_attr( $class ) . '"><a href="' . esc_url( $url ) . '"><img src="' . esc_url( $this->assets_url . '/images/' . $image . '.png' ) . '" /></a></span>';
+				$value = '<span class="' . esc_attr( $class ) . '"><a href="' . esc_url( $url ) . '"><span class="dashicons dashicons-yes"></span></a></span>';
 
 				echo $value;
 			break;

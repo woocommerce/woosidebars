@@ -27,5 +27,4 @@
  global $woosidebars;
  $woosidebars = new Woo_Sidebars( __FILE__ );
  $woosidebars->version = '1.4.4';
- $woosidebars->init();
 ?>
