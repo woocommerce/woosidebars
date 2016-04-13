@@ -2,13 +2,14 @@
 .woo-conditions.ui-tabs { padding: 0; }
 .woo-conditions .ui-tabs-hide { display: none !important; }
 .woo-conditions .ui-widget-header { border: none; }
-.woo-conditions .conditions-tabs { background:none;padding:3px 0px 0;margin:0;overflow:hidden;zoom:1;line-height:1em; }
+.woo-conditions .conditions-tabs { background:none;padding:3px 0px 0;margin:0;zoom:1;line-height:1em; }
 .woo-conditions .conditions-tabs li { float:left;padding:0;margin:0 5px 0 0; }
 .woo-conditions .conditions-tabs li.alignright { float: right; }
 .woo-conditions .conditions-tabs li.hide { display: none; }
-.woo-conditions .conditions-tabs li.advanced-settings { margin-right: 1em; }
-.woo-conditions .conditions-tabs li.advanced-settings a { padding-top: 3px; }
-.woo-conditions .conditions-tabs li.advanced-settings a span:before { color: #999; content: "\f111"; font-family: "Dashicons"; font-size: 1.1rem; margin-right: 0.5rem; position: relative; top: 4px; }
+.woo-conditions .advanced-settings-tab { position: absolute; right: 3em; top: -2.8em; }
+.woo-conditions .advanced-settings-tab li.advanced-settings { margin-right: 1em; }
+.woo-conditions .advanced-settings-tab li.advanced-settings a { padding-top: 3px; background: none; border: 0; }
+.woo-conditions .advanced-settings-tab li.advanced-settings a span:before { color: #999; content: "\f111"; font-family: "Dashicons"; font-size: 1.1rem; margin-right: 0.5rem; position: relative; top: 4px; }
 .woo-conditions .conditions-tabs li a { padding:0;margin:0;border:0;border:1px solid #d5d5d5;border-bottom:0;float:left;padding:9px 9px;background:#ececec;text-decoration:none;color:#555; }
 .woo-conditions .conditions-tabs li.ui-state-active {}
 .woo-conditions .conditions-tabs li.ui-state-active a { background: #f8f8f8; color: #555; padding: 0; }
@@ -18,7 +19,7 @@
 .woo-conditions .conditions-tabs#category-tabs li a { padding: 8px 10px; outline: none; }
 
 #woosidebars-conditions.postbox .inside { background: #FFFFFF; padding: 0; margin: 0; }
-#woosidebars-conditions.postbox .inside .condition-tab { background: #FFFFFF; padding: 2px 18px; }
+#woosidebars-conditions.postbox .inside .condition-tab { background: #FFFFFF; padding: 2px 18px; clear: both; }
 #woosidebars-conditions.postbox .inside .condition-tab h4 { margin-top: 10px; }
 
 #woosidebars-conditions.postbox .conditions-column { display: block; margin: 0 20px 20px 0; }

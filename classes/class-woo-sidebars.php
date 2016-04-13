@@ -606,7 +606,7 @@ class Woo_Sidebars {
 		if ( in_array( $pagenow, array( 'edit.php', 'post.php', 'post-new.php' ) ) ) {
 			if ( get_post_type() != $this->token ) { return; }
 
-			wp_register_style( $this->token . '-admin', $this->assets_url . '/css/admin.css', array( 'dashicons' ), '1.0.0' );
+			wp_register_style( $this->token . '-admin', $this->assets_url . '/css/admin.css', array( 'dashicons' ), '1.4.4' );
 			wp_enqueue_style( $this->token . '-admin' );
 
 			wp_dequeue_style( 'jquery-ui-datepicker' );

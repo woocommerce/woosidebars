@@ -535,12 +535,17 @@ class Woo_Conditions {
 
 			$html .= '<div id="taxonomy-category" class="categorydiv tabs woo-conditions">' . "\n";
 
-				$html .= '<ul id="category-tabs" class="conditions-tabs alignleft">' . "\n";
+				$html .= '<div class="tab-container"><ul id="category-tabs" class="conditions-tabs alignleft">' . "\n";
 
 				$count = 0;
 
 				// Determine whether or not to show advanced items, based on user's preference (default: false).
 				$show_advanced = $this->show_advanced_items();
+
+				$text = __( 'Hide Advanced', 'woosidebars' );
+				if ( ! $show_advanced ) {
+					$text = __( 'Show Advanced', 'woosidebars' );
+				}
 
 				foreach ( $this->conditions_reference as $k => $v ) {
 					$count++;
@@ -571,7 +576,7 @@ class Woo_Conditions {
 
 				$html .= '</ul>' . "\n";
 
-				$html .= '<ul class="conditions-tabs"><li class="advanced-settings alignright hide-if-no-js"><a href="#"><span>' . __( 'Advanced', 'woosidebars' ) . '</span></a></li></ul>' . "\n";
+				$html .= '<ul class="conditions-tabs advanced-settings-tab alignright hide-if-no-js"><li class="advanced-settings alignright"><a href="#"><span>' . $text . '</span></a></li></ul></div><!--/.tab-container-->' . "\n";
 
 			foreach ( $this->conditions_reference as $k => $v ) {
 				$count = 0;
@@ -746,13 +751,13 @@ class Woo_Conditions {
 		if ( get_post_type() != $this->token ) { return; }
 
 		if ( in_array( $pagenow, array( 'post.php', 'post-new.php' ) ) ) {
-			wp_register_script( $this->token . '-admin', $this->assets_url . '/js/admin.js', array( 'jquery', 'jquery-ui-tabs' ), '1.2.1', true );
+			wp_register_script( $this->token . '-admin', $this->assets_url . '/js/admin.js', array( 'jquery', 'jquery-ui-tabs' ), '1.4.4', true );
 
 			wp_enqueue_script( $this->token . '-admin' );
 
 			wp_dequeue_script( 'jquery-ui-datepicker' );
 
-			$translation_strings = array();
+			$translation_strings = array( 'woosidebars_show_advanced' => __( 'Show Advanced', 'woosidebars' ), 'woosidebars_hide_advanced' => __( 'Hide Advanced', 'woosidebars' ) );
 
 			$ajax_vars = array( 'woosidebars_advanced_noonce' => wp_create_nonce( 'woosidebars_advanced_noonce' ) );
 
