@@ -8,6 +8,9 @@ jQuery( document ).ready( function () {
 		var new_status = '1'; // Do display.
 		if ( jQuery( '#woosidebars-conditions .tabs li.advanced' ).hasClass( 'hide' ) ) {
 			new_status = '0'; // Don't display.
+			jQuery( '#woosidebars-conditions .advanced-settings span' ).text( woosidebars_localized_data.woosidebars_show_advanced );
+		} else {
+			jQuery( '#woosidebars-conditions .advanced-settings span' ).text( woosidebars_localized_data.woosidebars_hide_advanced );
 		}
 
 		// Perform the AJAX call.
