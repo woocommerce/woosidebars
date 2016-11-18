@@ -453,9 +453,10 @@ class Woo_Sidebars {
 
 		if ( count( $sidebars ) > 0 ) {
 			foreach ( $sidebars as $k => $v ) {
-				$sidebar_id = $v->post_name;
+				$sidebar_name = apply_filters( 'woosidebars_sidebar_name', $v->post_title );
+				$sidebar_id   = apply_filters( 'woosidebars_sidebar_id', $v->post_name );
 				// $sidebar_id = $this->prefix . $v->ID;
-				register_sidebar( array( 'name' => $v->post_title, 'id' => $sidebar_id, 'description' => $v->post_excerpt ) );
+				register_sidebar( array( 'name' => $sidebar_name, 'id' => $sidebar_id, 'description' => $v->post_excerpt ) );
 			}
 		}
 	} // End register_custom_sidebars()
@@ -548,8 +549,8 @@ class Woo_Sidebars {
 		$woo_custom_sidebar_data = $this->find_best_sidebars( $woo_custom_sidebar_data );
 
 	 	if ( count( $woo_custom_sidebar_data ) > 0 ) {
-	 		foreach ( $woo_custom_sidebar_data as $k => $v ) {
-	 			$sidebar_id = $v->post_name;
+	 		foreach ( $woo_custom_sidebar_data as $k => $v ) {;
+				$sidebar_id   = apply_filters( 'woosidebars_sidebar_id', $v->post_name );
 				// $sidebar_id = $this->prefix . $v->ID;
 	 			if ( isset( $sidebars_widgets[$sidebar_id] ) && isset( $v->to_replace ) && $v->to_replace != '' ) {
 				 	$widgets = $sidebars_widgets[$sidebar_id];
