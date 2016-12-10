@@ -740,7 +740,7 @@ class Woo_Sidebars {
 	 * @return void
 	 */
 	public function add_contextual_help () {
-		if ( get_current_screen()->id != 'edit-sidebar' ) { return; }
+		if ( ! get_current_screen() || get_current_screen()->id != 'edit-sidebar' ) { return; }
 
 		get_current_screen()->add_help_tab( array(
 		'id'		=> 'overview',
