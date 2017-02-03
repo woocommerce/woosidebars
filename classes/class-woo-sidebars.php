@@ -498,7 +498,7 @@ class Woo_Sidebars {
 		 	$args = array(
 		 		'post_type' => $this->token,
 		 		'posts_per_page' => intval( $this->upper_limit ),
-		 		'suppress_filters' => 'false'
+		 		'suppress_filters' => true
 		 	);
 
 		 	$meta_query = array(
@@ -521,6 +521,12 @@ class Woo_Sidebars {
 
 		 	if ( count( $sidebars ) > 0 ) {
 		 		foreach ( $sidebars as $k => $v ) {
+
+		 			// get the post language
+					$wpml_element = apply_filters( 'wpml_element_language_code', ICL_LANGUAGE_CODE, array( 'element_id' => $v->ID, 'element_type' => 'post_sidebar' ) );	
+					// check if the current language matches the language of the sidebar
+					if( $wpml_element != ICL_LANGUAGE_CODE ) continue;
+
 		 			$to_replace = get_post_meta( $v->ID, '_sidebar_to_replace', true );
 		 			$sidebars[$k]->to_replace = $to_replace;
 
