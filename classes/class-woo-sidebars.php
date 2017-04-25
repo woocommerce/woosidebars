@@ -455,7 +455,17 @@ class Woo_Sidebars {
 			foreach ( $sidebars as $k => $v ) {
 				$sidebar_id = $v->post_name;
 				// $sidebar_id = $this->prefix . $v->ID;
-				register_sidebar( array( 'name' => $v->post_title, 'id' => $sidebar_id, 'description' => $v->post_excerpt ) );
+				register_sidebar( array( 
+					'name' => $v->post_title,
+					'id' => $sidebar_id,
+					'description' => $v->post_excerpt,
+					'class' => '',
+					'before_widget' => '<div id="%1$s" class="widget %2$s">',
+                    			'after_widget' => '</div>',
+                    			'before_title' => '<h3 class="widgettitle">',
+                    			'after_title' => '</h3>'));
+					) 
+				);
 			}
 		}
 	} // End register_custom_sidebars()
