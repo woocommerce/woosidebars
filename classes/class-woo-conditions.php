@@ -367,6 +367,7 @@ class Woo_Conditions {
 									'description' => __( 'Displayed on all 404 error screens.', 'woosidebars' )
 									);
 
+
 		$this->conditions_reference = (array)apply_filters( 'woo_conditions_reference', $conditions );
 		$this->conditions_headings = (array)apply_filters( 'woo_conditions_headings', $conditions_headings );
 	} // End setup_default_conditions_reference()
