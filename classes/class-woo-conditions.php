@@ -375,7 +375,7 @@ class Woo_Conditions {
 	/**
 	 * is_hierarchy function.
 	 *
-	 * @description Is the current view a part of the default template heirarchy?
+	 * @description Is the current view a part of the default template hierarchy?
 	 * @access public
 	 * @return void
 	 */
