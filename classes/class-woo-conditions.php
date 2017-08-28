@@ -434,14 +434,6 @@ class Woo_Conditions {
 			$this->conditions[] = 'search';
 		}
 
-		if ( is_home() ) {
-			$this->conditions[] = 'home';
-		}
-
-		if ( is_front_page() ) {
-			$this->conditions[] = 'front_page';
-		}
-
 		if ( is_archive() ) {
 			$this->conditions[] = 'archive';
 		}
