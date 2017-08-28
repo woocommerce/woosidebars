@@ -428,6 +428,13 @@ class Woo_Conditions {
 
 			// Post-specific condition.
 			$this->conditions[] = 'post' . '-' . get_the_ID();
+			$this->conditions[] = 'postwc' . '-' . get_the_ID();
+		}
+
+		$ancestors = get_post_ancestors( get_the_ID() );
+
+		foreach ( $ancestors as $ancestor ) {
+			$this->conditions[] = 'postwc-' . $ancestor;
 		}
 
 		if ( is_search() ) {
