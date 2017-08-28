@@ -141,6 +141,33 @@ class Woo_Conditions {
 
 		}
 
+
+		// Pages and their children
+		$conditions['pages_with_children'] = array();
+
+		$statuses_string = join( ',', array_keys( $post_statuses ) );
+		$pages = get_pages( array( 'post_status' => $statuses_string ) );
+
+		if ( count( $pages ) > 0 ) {
+
+			$conditions_headings['pages_with_children'] = __( 'Pages and their children', 'woosidebars' );
+
+			foreach ( $pages as $k => $v ) {
+				$token = 'postwc-' . $v->ID;
+				$label = esc_html( $v->post_title );
+				if ( 'publish' != $v->post_status ) {
+					$label .= ' (' . $post_statuses[$v->post_status] . ')';
+				}
+
+				$conditions['pages_with_children'][$token] = array(
+									'label' => $label,
+									'description' => sprintf( __( 'The "%s" page and its children', 'woosidebars' ), $v->post_title )
+									);
+			}
+
+		}
+
+
 		$args = array(
 					'show_ui' => true,
 					'public' => true,
