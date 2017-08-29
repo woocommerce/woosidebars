@@ -550,12 +550,19 @@ class Woo_Conditions {
 
 		if ( count( $this->conditions_reference ) > 0 ) {
 
-			// Separate out the taxonomy items for use as sub-tabs of "Taxonomy Terms".
+			// Separate out the taxonomy items and pages with children for use as sub-tabs of "Taxonomy Terms" and hierarchical presentation of pages
 			$taxonomy_terms = array();
+			$pwc = array();
+
 
 			foreach ( $this->conditions_reference as $k => $v ) {
 				if ( substr( $k, 0, 9 ) == 'taxonomy-' ) {
 					$taxonomy_terms[$k] = $v;
+					unset( $this->conditions_reference[$k] );
+				}
+
+				if ( 'pages_with_children' === $k ) {
+					$pwc[$k] = $v;
 					unset( $this->conditions_reference[$k] );
 				}
 			}
