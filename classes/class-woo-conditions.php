@@ -116,33 +116,8 @@ class Woo_Conditions {
 		// Get an array of the different post status labels, in case we need it later.
 		$post_statuses = get_post_statuses();
 
-		// Pages
+		// Pages and Pages with children
 		$conditions['pages'] = array();
-
-		$statuses_string = join( ',', array_keys( $post_statuses ) );
-		$pages = get_pages( array( 'post_status' => $statuses_string ) );
-
-		if ( count( $pages ) > 0 ) {
-
-			$conditions_headings['pages'] = __( 'Pages', 'woosidebars' );
-
-			foreach ( $pages as $k => $v ) {
-				$token = 'post-' . $v->ID;
-				$label = esc_html( $v->post_title );
-				if ( 'publish' != $v->post_status ) {
-					$label .= ' (' . $post_statuses[$v->post_status] . ')';
-				}
-
-				$conditions['pages'][$token] = array(
-									'label' => $label,
-									'description' => sprintf( __( 'The "%s" page', 'woosidebars' ), $v->post_title )
-									);
-			}
-
-		}
-
-
-		// Pages and their children
 		$conditions['pages_with_children'] = array();
 
 		$statuses_string = join( ',', array_keys( $post_statuses ) );
@@ -150,23 +125,32 @@ class Woo_Conditions {
 
 		if ( count( $pages ) > 0 ) {
 
+			$conditions_headings['pages'] = __( 'Pages', 'woosidebars' );
 			$conditions_headings['pages_with_children'] = __( 'Pages and their children', 'woosidebars' );
 
 			foreach ( $pages as $k => $v ) {
-				$token = 'postwc-' . $v->ID;
+				$token = 'post-' . $v->ID;
+				$pwctoken = 'postwc-' . $v->ID;
+
 				$label = esc_html( $v->post_title );
 				if ( 'publish' != $v->post_status ) {
 					$label .= ' (' . $post_statuses[$v->post_status] . ')';
 				}
 
-				$conditions['pages_with_children'][$token] = array(
-									'label' => $label,
-									'description' => sprintf( __( 'The "%s" page and its children', 'woosidebars' ), $v->post_title )
-									);
+				$conditions['pages'][$token] = array(
+					'label' => $label,
+					'description' => sprintf( __( 'The "%s" page', 'woosidebars' ), $v->post_title )
+				);
+
+				$conditions['pages_with_children'][$pwctoken] = array(
+					'label' => $label,
+					'description' => sprintf( __( 'The "%s" page and its children', 'woosidebars' ), $v->post_title ),
+					'parent' => $v->post_parent,
+					'ID' => $v->ID,
+				);
 			}
 
 		}
-
 
 		$args = array(
 					'show_ui' => true,
@@ -563,7 +547,7 @@ class Woo_Conditions {
 
 				if ( 'pages_with_children' === $k ) {
 					$pwc[$k] = $v;
-					unset( $this->conditions_reference[$k] );
+					// unset( $this->conditions_reference[$k] );
 				}
 			}
 
