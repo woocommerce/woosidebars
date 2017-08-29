@@ -375,10 +375,10 @@ class Woo_Sidebars {
 	 * @param object $post
 	 */
 	public function description_meta_box ( $post ) {
-	?>
-	<label class="screen-reader-text" for="excerpt"><?php _e( 'Description', 'woosidebars' ); ?></label><textarea rows="1" cols="40" name="excerpt" tabindex="6" id="excerpt"><?php echo $post->post_excerpt; // textarea_escaped ?></textarea>
-	<p><?php printf( __( 'Add an optional description, to be displayed when adding widgets to this widget area on the %sWidgets%s screen.', 'woosidebars' ), '<a href="' . esc_url( admin_url( 'widgets.php' ) ) . '">', '</a>' ); ?></p>
-	<?php
+		?>
+		<label class="screen-reader-text" for="excerpt"><?php _e( 'Description', 'woosidebars' ); ?></label><textarea rows="1" cols="40" name="excerpt" tabindex="6" id="excerpt"><?php echo $post->post_excerpt; // textarea_escaped ?></textarea>
+		<p><?php printf( __( 'Add an optional description, to be displayed when adding widgets to this widget area on the %sWidgets%s screen.', 'woosidebars' ), '<a href="' . esc_url( admin_url( 'widgets.php' ) ) . '">', '</a>' ); ?></p>
+		<?php
 	} // End description_meta_box()
 
 	/**
