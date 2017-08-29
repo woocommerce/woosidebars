@@ -150,6 +150,7 @@ class Woo_Conditions {
 				);
 			}
 
+			$conditions['pages_with_children'] = $this->add_depth( $conditions['pages_with_children'] );
 		}
 
 		$args = array(
@@ -355,6 +356,30 @@ class Woo_Conditions {
 		$this->conditions_reference = (array)apply_filters( 'woo_conditions_reference', $conditions );
 		$this->conditions_headings = (array)apply_filters( 'woo_conditions_headings', $conditions_headings );
 	} // End setup_default_conditions_reference()
+
+
+	private function add_depth( $conditions ) {
+		$map = array();
+		$depth = array();
+		foreach ( $conditions as $condition ) {
+			$map[ $condition['ID'] ] = $condition['parent'];
+		}
+
+		foreach ( $map as $id => $parent ) {
+			$d = 0;
+			while ( 0 != $parent ) {
+				$d++;
+				$parent = $map[$parent];
+			}
+			$depth[$id] = $d;
+		}
+
+		foreach ( $conditions as $key => $condition ) {
+			$conditions[ $key ]['depth'] = $depth[ $condition['ID'] ];
+		}
+
+		return $conditions;
+	}
 
 	/**
 	 * is_hierarchy function.
@@ -625,19 +650,23 @@ class Woo_Conditions {
 				$tab .= '<h4>' . esc_html( $this->conditions_headings[$k] ) . '</h4>' . "\n";
 			}
 			$tab .= '<ul class="alignleft conditions-column">' . "\n";
-				foreach ( $v as $i => $j ) {
-					$count++;
-
-					$checked = '';
-					if ( in_array( $i, $selected_conditions ) ) {
-						$checked = ' checked="checked"';
-					}
-					$tab .= '<li><label class="selectit" title="' . esc_attr( $j['description'] ) . '"><input type="checkbox" name="conditions[]" value="' . $i . '" id="checkbox-' . $i . '"' . $checked . ' /> ' . esc_html( $j['label'] ) . '</label></li>' . "\n";
-
-					if ( $count % 10 == 0 && $count < ( count( $v ) ) ) {
-						$tab .= '</ul><ul class="alignleft conditions-column">';
-					}
+			foreach ( $v as $i => $j ) {
+				$depth = '';
+				if ( isset( $j['depth'] ) ) {
+					$depth = str_repeat( '&nbsp;', $j['depth'] * 3 );
 				}
+				$count++;
+
+				$checked = '';
+				if ( in_array( $i, $selected_conditions ) ) {
+					$checked = ' checked="checked"';
+				}
+				$tab .= '<li><label class="selectit" title="' . esc_attr( $j['description'] ) . '">' . $depth . '<input type="checkbox" name="conditions[]" value="' . $i . '" id="checkbox-' . $i . '"' . $checked . ' /> ' . esc_html( $j['label'] ) . '</label></li>' . "\n";
+
+				if ( $count % 10 == 0 && $count < ( count( $v ) ) ) {
+					$tab .= '</ul><ul class="alignleft conditions-column">';
+				}
+			}
 
 			$tab .= '</ul>' . "\n";
 			// Filter the contents of the current tab.
