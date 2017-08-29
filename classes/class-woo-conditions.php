@@ -569,127 +569,12 @@ class Woo_Conditions {
 
 			$html .= '<div id="taxonomy-category" class="categorydiv tabs woo-conditions">' . "\n";
 
-				$html .= '<ul id="category-tabs" class="conditions-tabs alignleft">' . "\n";
+			$html .= $this->render_tabs( $selected_conditions );
 
-				$count = 0;
+			$html .= $this->render_standard_pages( $selected_conditions );
 
-				// Determine whether or not to show advanced items, based on user's preference (default: false).
-				$show_advanced = $this->show_advanced_items();
+			$html .= $this->render_taxonomy_terms_tabs( $taxonomy_terms, $selected_conditions );
 
-				foreach ( $this->conditions_reference as $k => $v ) {
-					$count++;
-					$class = '';
-					if ( $count == 1 ) {
-						$class = 'tabs';
-					} else {
-						$class = 'hide-if-no-js';
-					}
-					if ( in_array( $k, array( 'pages' ) ) ) {
-						$class .= ' basic';
-					} else {
-							$class .= ' advanced';
-							if ( ! $show_advanced ) { $class .= ' hide'; }
-					}
-
-					if ( isset( $this->conditions_headings[$k] ) ) {
-						$html .= '<li class="' . esc_attr( $class ) . '"><a href="#tab-' . esc_attr( $k ) . '">' . esc_html( $this->conditions_headings[$k] ) . '</a></li>' . "\n";
-					}
-
-					if ( $k == 'taxonomies' ) {
-						$html .= '<li class="' . esc_attr( $class ) . '"><a href="#tab-taxonomy-terms">' . __( 'Taxonomy Terms', 'woosidebars' ) . '</a></li>' . "\n";
-					}
-				}
-
-				$class = 'hide-if-no-js advanced';
-				if ( ! $show_advanced ) { $class .= ' hide'; }
-
-				$html .= '</ul>' . "\n";
-
-				$html .= '<ul class="conditions-tabs"><li class="advanced-settings alignright hide-if-no-js"><a href="#">' . __( 'Advanced', 'woosidebars' ) . '</a></li></ul>' . "\n";
-
-			foreach ( $this->conditions_reference as $k => $v ) {
-				$count = 0;
-
-				$tab = '';
-
-				$tab .= '<div id="tab-' . esc_attr( $k ) . '" class="condition-tab">' . "\n";
-				if ( isset( $this->conditions_headings[$k] ) ) {
-					$tab .= '<h4>' . esc_html( $this->conditions_headings[$k] ) . '</h4>' . "\n";
-				}
-				$tab .= '<ul class="alignleft conditions-column">' . "\n";
-					foreach ( $v as $i => $j ) {
-						$count++;
-
-						$checked = '';
-						if ( in_array( $i, $selected_conditions ) ) {
-							$checked = ' checked="checked"';
-						}
-						$tab .= '<li><label class="selectit" title="' . esc_attr( $j['description'] ) . '"><input type="checkbox" name="conditions[]" value="' . $i . '" id="checkbox-' . $i . '"' . $checked . ' /> ' . esc_html( $j['label'] ) . '</label></li>' . "\n";
-
-						if ( $count % 10 == 0 && $count < ( count( $v ) ) ) {
-							$tab .= '</ul><ul class="alignleft conditions-column">';
-						}
-					}
-
-				$tab .= '</ul>' . "\n";
-				// Filter the contents of the current tab.
-				$tab = apply_filters( 'woo_conditions_tab_' . esc_attr( $k ), $tab );
-				$html .= $tab;
-				$html .= '<div class="clear"></div>';
-				$html .= '</div>' . "\n";
-			}
-
-			// Taxonomy Terms Tab
-			$html .= '<div id="tab-taxonomy-terms" class="condition-tab inner-tabs">' . "\n";
-					$html .= '<ul class="conditions-tabs-inner hide-if-no-js">' . "\n";
-
-				foreach ( $taxonomy_terms as $k => $v ) {
-					if ( ! isset( $this->conditions_headings[$k] ) ) { unset( $taxonomy_terms[$k] ); }
-				}
-
-				$count = 0;
-				foreach ( $taxonomy_terms as $k => $v ) {
-					$count++;
-					$class = '';
-					if ( $count == 1 ) {
-						$class = 'tabs';
-					} else {
-						$class = 'hide-if-no-js';
-					}
-
-					$html .= '<li><a href="#tab-' . $k . '" title="' . __( 'Taxonomy Token', 'woosidebars' ) . ': ' . str_replace( 'taxonomy-', '', $k ) . '">' . esc_html( $this->conditions_headings[$k] ) . '</a>';
-						if ( $count != count( $taxonomy_terms ) ) {
-							$html .= ' |';
-						}
-					$html .= '</li>' . "\n";
-				}
-
-				$html .= '</ul>' . "\n";
-
-			foreach ( $taxonomy_terms as $k => $v ) {
-				$count = 0;
-
-				$html .= '<div id="tab-' . $k . '" class="condition-tab">' . "\n";
-				$html .= '<h4>' . esc_html( $this->conditions_headings[$k] ) . '</h4>' . "\n";
-				$html .= '<ul class="alignleft conditions-column">' . "\n";
-					foreach ( $v as $i => $j ) {
-						$count++;
-
-						$checked = '';
-						if ( in_array( $i, $selected_conditions ) ) {
-							$checked = ' checked="checked"';
-						}
-						$html .= '<li><label class="selectit" title="' . esc_attr( $j['description'] ) . '"><input type="checkbox" name="conditions[]" value="' . $i . '" id="checkbox-' . esc_attr( $i ) . '"' . $checked . ' /> ' . esc_html( $j['label'] ) . '</label></li>' . "\n";
-
-						if ( $count % 10 == 0 && $count < ( count( $v ) ) ) {
-							$html .= '</ul><ul class="alignleft conditions-column">';
-						}
-					}
-
-				$html .= '</ul>' . "\n";
-				$html .= '<div class="clear"></div>';
-				$html .= '</div>' . "\n";
-			}
 			$html .= '</div>' . "\n";
 		}
 
@@ -700,6 +585,143 @@ class Woo_Conditions {
 
 		echo $html;
 	} // End meta_box_content()
+
+	private function render_tabs( $selected_conditions ) {
+		$html = '<ul id="category-tabs" class="conditions-tabs alignleft">' . "\n";
+
+		$count = 0;
+
+		// Determine whether or not to show advanced items, based on user's preference (default: false).
+		$show_advanced = $this->show_advanced_items();
+
+		foreach ( $this->conditions_reference as $k => $v ) {
+			$count++;
+			$class = '';
+			if ( $count == 1 ) {
+				$class = 'tabs';
+			} else {
+				$class = 'hide-if-no-js';
+			}
+			if ( in_array( $k, array( 'pages' ) ) ) {
+				$class .= ' basic';
+			} else {
+					$class .= ' advanced';
+					if ( ! $show_advanced ) { $class .= ' hide'; }
+			}
+
+			if ( isset( $this->conditions_headings[$k] ) ) {
+				$html .= '<li class="' . esc_attr( $class ) . '"><a href="#tab-' . esc_attr( $k ) . '">' . esc_html( $this->conditions_headings[$k] ) . '</a></li>' . "\n";
+			}
+
+			if ( $k == 'taxonomies' ) {
+				$html .= '<li class="' . esc_attr( $class ) . '"><a href="#tab-taxonomy-terms">' . __( 'Taxonomy Terms', 'woosidebars' ) . '</a></li>' . "\n";
+			}
+		}
+
+		$class = 'hide-if-no-js advanced';
+		if ( ! $show_advanced ) { $class .= ' hide'; }
+
+		$html .= '</ul>' . "\n";
+
+		$html .= '<ul class="conditions-tabs"><li class="advanced-settings alignright hide-if-no-js"><a href="#">' . __( 'Advanced', 'woosidebars' ) . '</a></li></ul>' . "\n";
+
+		return $html;
+	}
+
+	private function render_standard_pages( $selected_conditions ) {
+		$html = '';
+
+		foreach ( $this->conditions_reference as $k => $v ) {
+			$count = 0;
+
+			$tab = '';
+
+			$tab .= '<div id="tab-' . esc_attr( $k ) . '" class="condition-tab">' . "\n";
+			if ( isset( $this->conditions_headings[$k] ) ) {
+				$tab .= '<h4>' . esc_html( $this->conditions_headings[$k] ) . '</h4>' . "\n";
+			}
+			$tab .= '<ul class="alignleft conditions-column">' . "\n";
+				foreach ( $v as $i => $j ) {
+					$count++;
+
+					$checked = '';
+					if ( in_array( $i, $selected_conditions ) ) {
+						$checked = ' checked="checked"';
+					}
+					$tab .= '<li><label class="selectit" title="' . esc_attr( $j['description'] ) . '"><input type="checkbox" name="conditions[]" value="' . $i . '" id="checkbox-' . $i . '"' . $checked . ' /> ' . esc_html( $j['label'] ) . '</label></li>' . "\n";
+
+					if ( $count % 10 == 0 && $count < ( count( $v ) ) ) {
+						$tab .= '</ul><ul class="alignleft conditions-column">';
+					}
+				}
+
+			$tab .= '</ul>' . "\n";
+			// Filter the contents of the current tab.
+			$tab = apply_filters( 'woo_conditions_tab_' . esc_attr( $k ), $tab );
+			$html .= $tab;
+			$html .= '<div class="clear"></div>';
+			$html .= '</div>' . "\n";
+		}
+
+		return $html;
+	}
+
+	private function render_taxonomy_terms_tabs( $taxonomy_terms, $selected_conditions ) {
+		// Taxonomy Terms Tab
+		$html = '<div id="tab-taxonomy-terms" class="condition-tab inner-tabs">' . "\n";
+		$html .= '<ul class="conditions-tabs-inner hide-if-no-js">' . "\n";
+
+		foreach ( $taxonomy_terms as $k => $v ) {
+			if ( ! isset( $this->conditions_headings[$k] ) ) { unset( $taxonomy_terms[$k] ); }
+		}
+
+		$count = 0;
+		foreach ( $taxonomy_terms as $k => $v ) {
+			$count++;
+			$class = '';
+			if ( $count == 1 ) {
+				$class = 'tabs';
+			} else {
+				$class = 'hide-if-no-js';
+			}
+
+			$html .= '<li><a href="#tab-' . $k . '" title="' . __( 'Taxonomy Token', 'woosidebars' ) . ': ' . str_replace( 'taxonomy-', '', $k ) . '">' . esc_html( $this->conditions_headings[$k] ) . '</a>';
+				if ( $count != count( $taxonomy_terms ) ) {
+					$html .= ' |';
+				}
+			$html .= '</li>' . "\n";
+		}
+
+		$html .= '</ul>' . "\n";
+
+		foreach ( $taxonomy_terms as $k => $v ) {
+			$count = 0;
+
+			$html .= '<div id="tab-' . $k . '" class="condition-tab">' . "\n";
+			$html .= '<h4>' . esc_html( $this->conditions_headings[$k] ) . '</h4>' . "\n";
+			$html .= '<ul class="alignleft conditions-column">' . "\n";
+
+			foreach ( $v as $i => $j ) {
+				$count++;
+
+				$checked = '';
+				if ( in_array( $i, $selected_conditions ) ) {
+					$checked = ' checked="checked"';
+				}
+				$html .= '<li><label class="selectit" title="' . esc_attr( $j['description'] ) . '"><input type="checkbox" name="conditions[]" value="' . $i . '" id="checkbox-' . esc_attr( $i ) . '"' . $checked . ' /> ' . esc_html( $j['label'] ) . '</label></li>' . "\n";
+
+				if ( $count % 10 == 0 && $count < ( count( $v ) ) ) {
+					$html .= '</ul><ul class="alignleft conditions-column">';
+				}
+			}
+
+			$html .= '</ul>' . "\n";
+			$html .= '<div class="clear"></div>';
+			$html .= '</div>' . "\n";
+
+		}
+		return $html;
+	}
 
 	/**
 	 * meta_box_save function.
