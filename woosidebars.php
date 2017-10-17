@@ -14,18 +14,21 @@
  * Domain Path: /lang
  */
 
- if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
- if ( ! class_exists( 'Woo_Conditions' ) ) {
- 	require_once( 'classes/class-woo-conditions.php' );
- }
- require_once( 'classes/class-woo-sidebars.php' );
+if ( ! class_exists( 'Woo_Conditions' ) ) {
+	require_once( 'classes/class-woo-conditions.php' );
+}
+require_once( 'classes/class-woo-sidebars.php' );
 
- // Third-party integrations.
- if ( class_exists( 'Woocommerce' ) ) require_once( 'integrations/integration-woocommerce.php' );
+// Third-party integrations.
+if ( class_exists( 'Woocommerce' ) ) {
+	require_once( 'integrations/integration-woocommerce.php' );
+}
 
- global $woosidebars;
- $woosidebars = new Woo_Sidebars( __FILE__ );
- $woosidebars->version = '1.4.3';
- $woosidebars->init();
-?>
+global $woosidebars;
+$woosidebars = new Woo_Sidebars( __FILE__ );
+$woosidebars->version = '1.4.3';
+$woosidebars->init();
