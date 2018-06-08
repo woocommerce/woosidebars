@@ -453,10 +453,10 @@ class Woo_Sidebars {
 
 		if ( count( $sidebars ) > 0 ) {
 			foreach ( $sidebars as $k => $v ) {
-				$args = apply_filters( 'woosidebars_sidebar_args', array( 
-					'name'        => $v->post_title, 
-					'id'          => $v->post_name, 
-					'description' => $v->post_excerpt, 
+				$args = apply_filters( 'woosidebars_sidebar_args', array(
+					'name'        => $v->post_title,
+					'id'          => $v->post_name,
+					'description' => $v->post_excerpt,
 				), $v, $this );
 				register_sidebar( $args );
 			}
@@ -525,10 +525,14 @@ class Woo_Sidebars {
 		 	if ( count( $sidebars ) > 0 ) {
 		 		foreach ( $sidebars as $k => $v ) {
 
-		 			// get the post language
-					$wpml_element = apply_filters( 'wpml_element_language_code', ICL_LANGUAGE_CODE, array( 'element_id' => $v->ID, 'element_type' => 'post_sidebar' ) );	
-					// check if the current language matches the language of the sidebar
-					if( $wpml_element != ICL_LANGUAGE_CODE ) continue;
+					if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
+						// get the post language
+						$wpml_element = apply_filters( 'wpml_element_language_code', ICL_LANGUAGE_CODE, array( 'element_id' => intval( $v->ID ), 'element_type' => 'post_sidebar' ) );
+						// check if the current language matches the language of the sidebar
+						if ( $wpml_element != ICL_LANGUAGE_CODE ) {
+								continue;
+						}
+					}
 
 		 			$to_replace = get_post_meta( $v->ID, '_sidebar_to_replace', true );
 		 			$sidebars[$k]->to_replace = $to_replace;
