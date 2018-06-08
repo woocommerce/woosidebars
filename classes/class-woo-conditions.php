@@ -286,7 +286,7 @@ class Woo_Conditions {
 
 					// Setup each individual taxonomy's terms as well.
 					$conditions_headings['taxonomy-' . $k] = $taxonomy->labels->name;
-					$terms = get_terms( $k );
+					$terms = get_terms( array( 'taxonomy' => $k, 'hide_empty' => false ) );
 					if ( count( $terms ) > 0 ) {
 						$conditions['taxonomy-' . $k] = array();
 						foreach ( $terms as $i => $j ) {
