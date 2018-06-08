@@ -6,11 +6,11 @@ When contributing please ensure you follow the guidelines below so that we can k
 
 __Note:__
 
-GitHub is for *bug reports and contributions only* - if you have a support question or a request for a customization, don't post here. Use [WooThemes Support](http://support.woothemes.com) for customer support, [WordPress.org](http://wordpress.org/support/plugin/woosidebars) for community support, and for customisations we recommend one of the following services:
+GitHub is for *bug reports and contributions only* - if you have a support question or a request for a customization, don't post here. Use [WordPress.org](http://wordpress.org/support/plugin/woosidebars) for community support, and for customisations we recommend one of the following services:
 
 - Codeable: http://codeable.io/
 - Tweaky: https://www.tweaky.com/
-- Affiliated Woo Workers: http://www.woothemes.com/affiliated-woo-workers/
+- WooExperts: http://www.woocommerce.com/experts/
 
 ## Getting Started
 
@@ -35,5 +35,5 @@ At this point you're waiting on us to merge your pull request. We'll review all 
 
 * [General GitHub documentation](http://help.github.com/)
 * [GitHub pull request documentation](http://help.github.com/send-pull-requests/)
-* [WooSidebars Docs](http://docs.woothemes.com/documentation/plugins/woosidebars/)
-* [WooThemes Support](http://support.woothemes.com/)
+* [WooSidebars Docs](http://docs.woocommerce.com/documentation/plugins/woosidebars/)
+* [WooCommerce Support](http://woocommerce.com/my-account/tickets/)
