@@ -1,9 +1,9 @@
 === WooSidebars ===
-Contributors: woothemes, mattyza
+Contributors: woothemes, Automattic, mattyza
 Tags: widgets, sidebars, widget-areas
 Requires at least: 4.1
-Tested up to: 4.6.1
-Stable tag: 1.4.3
+Tested up to: 4.6.5
+Stable tag: 1.4.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -69,6 +69,9 @@ Looking to contribute code to this plugin? [Fork the repository over at GitHub](
 
 == Upgrade Notice ==
 
+= 1.4.4 =
+Bug fix and maintenance release. Enables "pages and their children" as a widget area condition.
+
 = 1.4.3 =
 Bug fix and maintenance release.
 
@@ -98,6 +101,10 @@ Updated for WordPress 3.5+ compatibility. Adjusted "Advanced" tab logic. Fixed b
 Moved to WordPress.org. Woo! Added scope to methods and properties where missing.
 
 == Changelog ==
+
+= 1.4.4 =
+* 2018-06-08
+* Bug fix and maintenance release. Enables "pages and their children" as a widget area condition.
 
 = 1.4.3 =
 * 2015-09-22

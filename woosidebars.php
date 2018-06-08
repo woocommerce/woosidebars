@@ -1,14 +1,14 @@
 <?php
 /**
  * Plugin Name: WooSidebars
- * Plugin URI: http://woothemes.com/woosidebars/
+ * Plugin URI: http://woocommerce.com/woosidebars/
  * Description: Replace widget areas in your theme for specific pages, archives and other sections of WordPress.
- * Author: WooThemes
- * Author URI: http://woothemes.com/
- * Version: 1.4.3
- * Stable tag: 1.4.3
+ * Author: WooCommerce
+ * Author URI: http://woocommerce.com/
+ * Version: 1.4.4
+ * Stable tag: 1.4.4
  * Requires at least: 4.1
- * Tested up to: 4.6.1
+ * Tested up to: 4.6.5
  * License: GPL v3 or later - http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: woosidebars
  * Domain Path: /lang
@@ -30,5 +30,5 @@ if ( class_exists( 'Woocommerce' ) ) {
 
 global $woosidebars;
 $woosidebars = new Woo_Sidebars( __FILE__ );
-$woosidebars->version = '1.4.3';
+$woosidebars->version = '1.4.4';
 $woosidebars->init();

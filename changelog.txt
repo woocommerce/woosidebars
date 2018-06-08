@@ -1,5 +1,9 @@
 *** WooSidebars Changelog ***
 
+2018.06.08 - version 1.4.4
+ * New - Enable a widget area for "a page and it's children".
+ * Fix - Error notice when on a page without a defined screen_id.
+
 2015.09.22 - version 1.4.3
  * Fix - Ensures condition headings are present before attempting to output in the conditions meta box.
    /classes/class-woo-conditions.php
