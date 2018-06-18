@@ -1,5 +1,8 @@
 *** WooSidebars Changelog ***
 
+2018.06.18 - version 1.4.5
+ * Fix - Fixes a fatal error, by removing the no longer relevant contextual help.
+
 2018.06.08 - version 1.4.4
  * New - Enable a widget area for "a page and it's children".
  * Fix - Error notice when on a page without a defined screen_id.
