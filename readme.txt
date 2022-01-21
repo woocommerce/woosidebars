@@ -71,6 +71,7 @@ Looking to contribute code to this plugin? [Fork the repository over at GitHub](
 
 = 1.4.6 =
 Fixes a sprintf modifier which was breaking WP Admin on sites running PHP8.
+Fixes alignment of the content of the "Taxanomy Terms" conditions tab in WP Admin.
 
 = 1.4.5 =
 Fixes a fatal error, by removing the no longer relevant contextual help.
