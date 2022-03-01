@@ -167,7 +167,7 @@ class Woo_Sidebars {
 			'new_item' => sprintf( __( 'New %s', 'woosidebars' ), $singular ),
 			'all_items' => sprintf( __( 'Widget Areas', 'woosidebars' ), $plural ),
 			'view_item' => sprintf( __( 'View %s', 'woosidebars' ), $singular ),
-			'search_items' => sprintf( __( 'Search %a', 'woosidebars' ), $plural ),
+			'search_items' => sprintf( __( 'Search %s', 'woosidebars' ), $plural ),
 			'not_found' =>  sprintf( __( 'No %s Found', 'woosidebars' ), $plural ),
 			'not_found_in_trash' => sprintf( __( 'No %s Found In Trash', 'woosidebars' ), $plural ),
 			'parent_item_colon' => '',
