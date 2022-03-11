@@ -2,8 +2,8 @@
 Contributors: woothemes, Automattic, mattyza
 Tags: widgets, sidebars, widget-areas
 Requires at least: 4.1
-Tested up to: 4.6.5
-Stable tag: 1.4.5
+Tested up to: 5.8.3
+Stable tag: 1.4.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -13,9 +13,9 @@ WooSidebars adds functionality to display different widgets in a sidebar, accord
 
 With WooSidebars, it's possible to change the widgets that display in a sidebar (widgetized area) according to a context (for example, a specific page, a specific blog post, certain categories or the search results screen). Setting up a custom widget area to display across multiple conditions is as easy as a few clicks.
 
-Looking for a helping hand? [View plugin documentation](http://docs.woothemes.com/documentation/plugins/woosidebars/).
+Looking for a helping hand? [View plugin documentation](https://woocommerce.com/documentation/plugins/woosidebars/).
 
-Looking to contribute code to this plugin? [Fork the repository over at GitHub](http://github.com/woothemes/woosidebars/). Please also read the CONTRIBUTING.md file, bundled within this plugin.
+Looking to contribute code to this plugin? [Fork the repository over at GitHub](https://github.com/woocommerce/woosidebars/). Please also read the CONTRIBUTING.md file, bundled within this plugin.
 
 == Installation ==
 
@@ -51,7 +51,7 @@ Automatic updates should work a charm; as always though, ensure you backup your 
 
 = Where can I find WooSidebars documentation and user guides? =
 
-For further documentation on using WooSidebars, please view the [WooSidebars Documentation](http://docs.woothemes.com/documentation/plugins/woosidebars/).
+For further documentation on using WooSidebars, please view the [WooSidebars Documentation](https://woocommerce.com/documentation/plugins/woosidebars/).
 
 = Will WooSidebars work with my theme? =
 
@@ -59,7 +59,7 @@ Yes; WooSidebars will work with any theme that supports dynamic widget areas.
 
 = How can I contribute to WooSidebars development? =
 
-Looking to contribute code to this plugin? [Fork the repository over at GitHub](http://github.com/woothemes/woosidebars/).
+Looking to contribute code to this plugin? [Fork the repository over at GitHub](https://github.com/woocommerce/woosidebars/).
 (submit pull requests to the "develop" branch)
 
 == Screenshots ==
@@ -68,6 +68,10 @@ Looking to contribute code to this plugin? [Fork the repository over at GitHub](
 2. Adding a custom widget area.
 
 == Upgrade Notice ==
+
+= 1.4.6 =
+Fixes a sprintf modifier which was breaking WP Admin on sites running PHP8.
+Fixes alignment of the content of the "Taxanomy Terms" conditions tab in WP Admin.
 
 = 1.4.5 =
 Fixes a fatal error, by removing the no longer relevant contextual help.
